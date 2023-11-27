@@ -44,7 +44,10 @@ export default {
   </div>
 </div> -->
 <div class="card mb-3 h-100 bg-light p-2 bg-gradient text-dark">
-  <img :src="apartment.cover_image_path" class="card-img-top h-100" alt="...">
+  <div >
+    <img v-if="apartment.cover_image_path" :src="apartment.cover_image_path" class="card-img-top h-100" alt="...">
+    <img v-else src="https://via.placeholder.com/200x150.png/333333?tex" class="card-img-top h-100" alt="...">
+  </div>
   <div class="card-body">
     <h5 class="card-title">{{apartment.title}}</h5>
     <p class="card-text">{{ apartment.description }}</p>
