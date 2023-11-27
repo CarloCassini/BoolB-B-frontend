@@ -1,6 +1,6 @@
 import { createApp } from "vue";
 // importo il router
-import { router } from "./data/router";
+import { router } from "./router/router";
 
 // importo il css di bootstrap
 import "bootstrap/dist/css/bootstrap.min.css";

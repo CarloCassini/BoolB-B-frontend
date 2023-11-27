@@ -11,6 +11,10 @@ const router = createRouter({
       name: "prova",
       //quale componente apparirà a questa rotta? lo abbiamo importato nel file router.js? vedi sopra
       component: Prova,
+      
+    },
+    {
+      path:'/index.html'
     },
   ],
 });
