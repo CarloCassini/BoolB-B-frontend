@@ -1,23 +1,22 @@
 <script>
 // import MyComponent from "./components/MyComponent.vue";
-import ApartmentList from "../components/apartments/ApartmentList.vue";
-
+import ApartmentsList from "../components/apartments/ApartmentsList.vue";
 
 export default {
   data() {
     return {
-      title: "Search Your perfect Apartment"
-    }
+      title: "Search Your perfect Apartment",
+    };
   },
   components: {
-    ApartmentList,
+    ApartmentsList,
   },
 };
 </script>
 
 <template>
   <h1>{{ title }}</h1>
-  <ApartmentList />
+  <ApartmentsList />
 </template>
 
 <style lang="scss" scoped></style>
