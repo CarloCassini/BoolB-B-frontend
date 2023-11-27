@@ -1,21 +1,37 @@
 <script>
-import ApartmentList from "../components/apartments/ApartmentList.vue";
+import axios from "axios";
+
+import ApartmentsList from "../components/apartments/ApartmentsList.vue";
+import { store } from "../data/store";
 
 export default {
   data() {
     return {
-      title: "Welcome to Bool B&B"
-    }
+      title: "Welcome to Bool B&B",
+      apartments: [],
+    };
   },
   components: {
-    ApartmentList,
+    ApartmentsList,
+  },
+  methods: {
+    fetchApartments(apiUri = store.apiUrl + "/apartments") {
+      console.log("call");
+
+      axios.get(apiUri).then((response) => {
+        this.apartments = response.data.results.data;
+      });
+    },
+  },
+  created() {
+    this.fetchApartments();
   },
 };
 </script>
 
 <template>
   <h1>{{ title }}</h1>
-    <ApartmentList />
+  <ApartmentsList :apartments="this.apartments" />
 </template>
 
 <style lang="scss" scoped></style>

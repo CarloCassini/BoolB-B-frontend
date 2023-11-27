@@ -22,7 +22,7 @@ export default {
     
     <router-link :to="{ name: 'homepage' }" aria-current="page" class="navbar-brand">
       
-      <img src="../../../../public/img/airbnb-logo-small-center.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top logo-img">
+      <img src="../../../img/airbnb-logo-small-center.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top logo-img">
         <span class="logo-txt ms-1">Boolbnb</span>
     </router-link>
 
