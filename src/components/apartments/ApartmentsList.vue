@@ -21,7 +21,15 @@ export default {
 </script>
 
 <template>
-  <ApartmentCard v-for="(apartment,index) in apartments" key="index" :apartment="apartment"/>
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-4" v-for="(apartment,index) in apartments" key="index" >
+
+        <ApartmentCard :apartment="apartment"/>
+
+      </div>
+    </div>
+  </div>
 </template>
 
 <style lang="scss" scoped></style>
