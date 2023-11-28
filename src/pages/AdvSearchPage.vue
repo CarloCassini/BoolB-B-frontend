@@ -1,6 +1,8 @@
 <script>
+import axios from "axios";
 // import MyComponent from "./components/MyComponent.vue";
 import ApartmentsList from "../components/apartments/ApartmentsList.vue";
+import { store } from "../data/store";
 
 export default {
   data() {
@@ -11,12 +13,27 @@ export default {
   components: {
     ApartmentsList,
   },
+  methods: {
+    fetchApartments(apiUri = store.apiUrl + "/apartments/service/1") {
+      console.log("call search");
+
+      axios.get(apiUri).then((response) => {
+        console.log(response.data.results.data);
+        this.apartments = response.data.results.data;
+      });
+    },
+  },
+  created() {
+    this.fetchApartments();
+  },
 };
 </script>
 
 <template>
   <h1>{{ title }}</h1>
-  <ApartmentsList />
+  <div @click="fetchApartments" class="btn">ciccio</div>
+  {{ apartments }}
+  <ApartmentsList :apartments="this.apartments" />
 </template>
 
 <style lang="scss" scoped></style>

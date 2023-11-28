@@ -17,6 +17,7 @@ export default {
   methods: {
     fetchApartments(apiUri = store.apiUrl + "/apartments") {
       console.log("call");
+      console.log(apiUri);
 
       axios.get(apiUri).then((response) => {
         this.apartments = response.data.results.data;
@@ -30,7 +31,7 @@ export default {
 </script>
 
 <template>
-  <h1 class="display-1 text-center my-5" style="color: #ff7977;">{{title}}</h1>
+  <h1 class="display-1 text-center my-5" style="color: #ff7977">{{ title }}</h1>
   <ApartmentsList :apartments="this.apartments" />
 </template>
 
