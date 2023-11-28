@@ -2,6 +2,9 @@
 import axios from "axios";
 
 import ApartmentsList from "../components/apartments/ApartmentsList.vue";
+import HeroImgUi from "../components/partials/ui/HeroImgUi.vue";
+import SearchBarUi from "../components/partials/ui/SearchBarUi.vue";
+
 import { store } from "../data/store";
 
 export default {
@@ -12,7 +15,7 @@ export default {
     };
   },
   components: {
-    ApartmentsList,
+    ApartmentsList,HeroImgUi,SearchBarUi
   },
   methods: {
     fetchApartments(apiUri = store.apiUrl + "/apartments") {
@@ -31,8 +34,12 @@ export default {
 </script>
 
 <template>
-  <h1 class="display-1 text-center my-5" style="color: #ff7977">{{ title }}</h1>
-  <ApartmentsList :apartments="this.apartments" />
+
+  <HeroImgUi />
+  <div class="container">
+
+    <ApartmentsList :apartments="this.apartments" />
+  </div>
 </template>
 
 <style lang="scss" scoped></style>
