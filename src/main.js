@@ -4,6 +4,7 @@ import { router } from "./router/router";
 
 // importo il css di bootstrap
 import "bootstrap/dist/css/bootstrap.min.css";
+
 // importo le regole javascript di bootstap
 import * as bootstrap from "bootstrap";
 

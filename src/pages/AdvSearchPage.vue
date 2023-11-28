@@ -32,9 +32,21 @@ export default {
 </script>
 
 <template>
-  <h1>{{ title }}</h1>
-  <div @click="fetchApartments()" class="btn">ciccio</div>
-  <ApartmentsList :apartments="this.apartments" :key="fetch" />
+  <div class="container">
+
+    <h1>{{ title }}</h1>
+    <!-- <div @click="fetchApartments()" class="btn">ciccio</div> -->
+    <div class="row">
+      <div class="col-md-6">
+        <!-- <ApartmentsList :apartments="this.apartments" :key="fetch" /> -->
+        apartments list
+      </div>
+      <div class="col-md-6">
+        mappa
+      </div>
+    </div>
+  </div>
+
 </template>
 
 <style lang="scss" scoped></style>

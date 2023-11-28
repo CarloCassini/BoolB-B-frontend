@@ -1,22 +1,24 @@
 <script>
 // import MyComponent from "./components/MyComponent.vue";
+import SearchBarUi from "./SearchBarUi.vue";
+
 
 export default {
   data() {
     return {
       title: "Hello world"
     }
-  }
+  },
 
-  // components: {
-  //   MyComponent,
-  // },
+  components: {
+    SearchBarUi,
+  },
 };
 </script>
 
 <template>
     
- <nav class="navbar navbar-expand-lg bg-gradient bg-light" data-bs-theme="light">
+ <nav class="navbar navbar-expand-lg bg-gradient bg-light sticky-top" data-bs-theme="light">
 
   <div class="container-fluid">
     
@@ -32,7 +34,7 @@ export default {
 
     <div class="collapse navbar-collapse" id="navbarNav">
 
-      <ul class="navbar-nav">
+      <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
 
         <li class="nav-item">
           
@@ -49,18 +51,26 @@ export default {
           </router-link>
           
         </li>
-        <!-- <li v-for="(item, index) in munuItems" key="index" class="nav-item">
-          
-          <router-link :to="{ name: item.routeName }"  class="nav-link">
-
-          </router-link>
-          
-        </li> -->
 
       </ul>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <div class="dropdown">
+          <button class="btn btn-outline dropdown-toggle mx-2" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Filters
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item w-100" href="#">Actisdsdfsdfon</a></li>
+            <li><a class="dropdown-item w-100" href="#">Another action</a></li>
+            <li><a class="dropdown-item w-100" href="#">Something else here</a></li>
+          </ul>
+        </div>
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
     </div>
   </div>
 </nav>
+
 </template>
 
 <style lang="scss" scoped>
