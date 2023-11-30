@@ -2,7 +2,7 @@
 import axios from "axios";
 
 import ApartmentsList from "../components/apartments/ApartmentsList.vue";
-import HeroImgUi from "../components/partials/ui/HeroImgUi.vue";
+import HeroImgUi from "../components/partials/ui/heroimgui.vue";
 import SearchBarUi from "../components/partials/ui/SearchBarUi.vue";
 
 import { store } from "../data/store";
@@ -15,7 +15,9 @@ export default {
     };
   },
   components: {
-    ApartmentsList,HeroImgUi,SearchBarUi
+    ApartmentsList,
+    HeroImgUi,
+    SearchBarUi,
   },
   methods: {
     fetchApartments(apiUri = store.apiUrl + "/apartments") {
@@ -34,10 +36,8 @@ export default {
 </script>
 
 <template>
-
   <HeroImgUi />
   <div class="container">
-
     <ApartmentsList :apartments="this.apartments" />
   </div>
 </template>
