@@ -8,11 +8,12 @@ export default {
     }
   },
   props:{
-    'apartment': Object
-  }
+    apartment: Object,
+    isDetail: Boolean,
+  },
 
   // components: {
-  //   MyComponent,
+  //
   // },
 
 };
@@ -44,9 +45,10 @@ export default {
   </div>
 </div> -->
 <div class="card mb-3 h-100 bg-light p-2 bg-gradient text-dark">
-  <div >
-    <img v-if="apartment.cover_image_path" :src="apartment.cover_image_path" class="card-img-top h-100" alt="...">
-    <img v-else src="https://via.placeholder.com/200x150.png/333333?tex" class="card-img-top h-100" alt="...">
+  <div>
+    <img v-if="!apartment.cover_image_path" src="https://via.placeholder.com/2000x1500.png/333333?text=Placeholder" class="card-img-top h-100" alt="Placeholder">
+    <img v-else-if="apartment.cover_image_path.startsWith('http://') || apartment.cover_image_path.startsWith('https://')" :src="apartment.cover_image_path" class="card-img-top h-100" alt="External Image">
+    <img v-else :src="'http://127.0.0.1:8000/storage/' + apartment.cover_image_path" class="card-img-top h-100" alt="Uploaded Image"> 
   </div>
   <div class="card-body">
     <h5 class="card-title">{{apartment.title}}</h5>
@@ -65,6 +67,12 @@ export default {
       
     </div>
     <p class="card-text"><small class="text-secondary">{{apartment.address}}</small></p>
+    <div class="card-footer" v-if="!isDetail">
+      <router-link :to="{ name: 'detail', params:{id: apartment.id},  }" class="btn btn-secondary" >
+      Vedi dettaglio
+    </router-link>
+    </div>
+
   </div>
 </div>
 </template>
