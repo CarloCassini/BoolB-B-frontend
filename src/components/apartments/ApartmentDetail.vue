@@ -3,6 +3,7 @@
 import axios from "axios";
 import { store } from "../../data/store";
 import ApartmentCard from "./ApartmentCard.vue";
+import Map from "../partials/ui/Map.vue";
 
 export default {
   data() {
@@ -13,6 +14,7 @@ export default {
 
   components: {
     ApartmentCard,
+    Map,
   },
   created() {
     axios
@@ -28,8 +30,9 @@ export default {
 
 <template>
   <div class="container">
-    <h1 class="my-3">Dettagli appartamento {{ this.$route.params.id }}</h1>
+    <h1 class="m-3">Dettagli appartamento {{ this.$route.params.id }}</h1>
     <ApartmentCard :apartment="apartment" :isDetail="true" v-if="apartment" />
+    <!-- <Map /> -->
   </div>
 </template>
 
