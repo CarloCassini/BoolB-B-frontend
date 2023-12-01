@@ -38,7 +38,7 @@ export default {
   <HeroImgUi />
   <div class="container">
 
-    <ApartmentsList :apartments="this.apartments" />
+    <ApartmentsList :colNum="3" :apartments="this.apartments" />
   </div>
 </template>
 
