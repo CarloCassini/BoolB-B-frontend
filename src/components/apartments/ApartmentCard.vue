@@ -56,9 +56,10 @@ export default {
     <h5 class="card-title">{{apartment.title}}</h5>
     <p class="card-text">{{ apartment.description }}</p>
     <div class="d-flex flex-column">
-        <span><strong class="me-1">Stanze:</strong>{{ apartment.rooms }}</span>
-        <span><strong class="me-1">bagni:</strong>{{ apartment.bathrooms }}</span>
-        <span><strong class="me-1">Grandezza:</strong>{{ apartment.m2 }}&#13217</span>
+        <span><strong class="me-1">Rooms:</strong>{{ apartment.rooms }}</span>
+        <span><strong class="me-1">Beds:</strong>{{ apartment.beds }}</span>
+        <span><strong class="me-1">Bathrooms:</strong>{{ apartment.bathrooms }}</span>
+        <span><strong class="me-1">Surface:</strong>{{ apartment.m2 }}&#13217</span>
       </div>
       <span class="badge fs-5" style="background-color: #ff7977;">{{apartment.beds}} <font-awesome-icon icon="fa-solid fa-bed" /></span> <br>
     <strong>Servizi:</strong>
