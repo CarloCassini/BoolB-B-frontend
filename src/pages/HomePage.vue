@@ -2,7 +2,7 @@
 import axios from "axios";
 
 import ApartmentsList from "../components/apartments/ApartmentsList.vue";
-import HeroImgUi from "../components/partials/ui/heroimgui.vue";
+import HeroImgUi from "../components/partials/ui/HeroImgUi.vue";
 import SearchBarUi from "../components/partials/ui/SearchBarUi.vue";
 
 import { store } from "../data/store";
@@ -38,7 +38,7 @@ export default {
 <template>
   <HeroImgUi />
   <div class="container">
-    <ApartmentsList :colNum="3" :apartments="this.apartments" />
+    <ApartmentsList :colNumSm="12" :colNumMd="6" :colNumLg="3" :apartments="this.apartments" />
   </div>
 </template>
 

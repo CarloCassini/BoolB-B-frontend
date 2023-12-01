@@ -16,9 +16,9 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
 /* import specific icons */
-import { faEnvelope ,faBed, faWifi, faCar, faPersonSwimming, faDoorOpen, faBath, faWater, faTrain, faLocationCrosshairs, faDumbbell, faMugSaucer, } from "@fortawesome/free-solid-svg-icons";
+import { faEnvelope ,faBed, faWifi, faCar, faPersonSwimming, faDoorOpen, faBath, faWater, faTrain, faLocationCrosshairs, faDumbbell, faMugSaucer, faBellConcierge, faToilet, faMaximize } from "@fortawesome/free-solid-svg-icons";
 /* add icons to the library */
-library.add(faEnvelope, faBed, faWifi, faCar,faPersonSwimming, faDoorOpen, faBath, faWater, faTrain, faLocationCrosshairs, faDumbbell, faMugSaucer,  );
+library.add(faEnvelope, faBed, faWifi, faCar,faPersonSwimming, faDoorOpen, faBath, faWater, faTrain, faLocationCrosshairs, faDumbbell, faMugSaucer, faBellConcierge, faToilet, faMaximize );
 
 import "./assets/scss/style.scss";
 import App from "./App.vue";
