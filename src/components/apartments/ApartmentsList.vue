@@ -1,23 +1,20 @@
 <script>
 import ApartmentCard from "./ApartmentCard.vue";
-import {store} from '../../data/store'
+import { store } from "../../data/store";
 import axios from "axios";
-
 
 export default {
   data() {
-    return {
-    };
+    return {};
   },
 
   components: {
     ApartmentCard,
   },
-  props:{
-    'apartments':Array,
+  props: {
+    apartments: Array,
     'colNum':Number
   },
- 
 };
 </script>
 
@@ -26,10 +23,11 @@ export default {
     <div class="row g-4">
       <div :class="'col-' + colNum" v-for="(apartment,index) in apartments" key="index" >
 
-        <ApartmentCard :apartment="apartment"/>
+        <ApartmentCard :apartment="apartment" :isDetail="false"/>
 
       </div>
     </div>
+  
 </template>
 
 <style lang="scss" scoped></style>
