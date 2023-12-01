@@ -14,7 +14,8 @@ export default {
     ApartmentCard,
   },
   props:{
-    'apartments':Array
+    'apartments':Array,
+    'colNum':Number
   },
  
 };
@@ -23,7 +24,7 @@ export default {
 <template>
  
     <div class="row g-4">
-      <div class="col-2" v-for="(apartment,index) in apartments" key="index" >
+      <div :class="'col-' + colNum" v-for="(apartment,index) in apartments" key="index" >
 
         <ApartmentCard :apartment="apartment"/>
 
