@@ -55,73 +55,6 @@ export default {
         </li>
 
       </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <div class="dropdown">
-          <button class="btn btn-outline dropdown-toggle mx-2" type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
-            Filters
-          </button>
-          <ul class="dropdown-menu">
-            <!--* serrvices list -->
-            <li class="w-100">
-              <span>Select Filters</span>
-              <div class="d-flex justify-content-evenly">
-                <li v-for="service in store.services" >
-                  <label :for="service.label">
-                    <span class="badge me-2 my-2 bg-gradient bg-dark fs-5"><font-awesome-icon :icon="service.symbol" style="color: #ff7977;" /></span>
-                  </label>
-                  <input type="checkbox" :name="service.label" :id="service.label" class="d-none">
-  
-                </li>
-              </div>
-            </li>
-            <!-- other filters -->
-            <li class="w-100">
-
-              <div class="d-flex justify-content-evenly">
-                <!--* Rooms -->
-                <div class="filter-container d-flex">
-                  <strong class="me-3">Rooms:</strong>
-                  <input class="bg-light border" type="number">
-                </div>
-                <!--* Beds -->
-                <div class="filter-container d-flex">
-                  <strong class="me-3">Beds:</strong>
-                  <input class="bg-light border" type="number">
-                </div>
-                <!--* Range -->
-                <div class="filter- d-flex">
-                  <strong class="me-3">Range:</strong>
-                  <input class="bg-light border" type="range">
-                </div>
-      
-              </div>
-            </li>
-    
-          </ul>
-          <!-- <ul class="dropdown-menu">
-            <li>
-              <span>
-                Select services
-              </span>
-              <ul>
-                <li v-for="service in store.services" >
-                
-                <span class="badge me-2 my-2 bg-gradient bg-dark fs-5"><font-awesome-icon :icon="service.symbol" style="color: #ff7977;" /></span>
-
-                </li>
-              </ul>
-              <span>
-                select rooms
-              </span>
-              <ul>
-
-              </ul>
-            </li>
-          </ul> -->
-        </div>
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
     </div>
   </div>
 </nav>
@@ -137,11 +70,5 @@ export default {
     color: #ff7977;
     font-weight: 600;
   }
-  .nav { margin-bottom: 0; }
-  .dropdown { position: static; }
-  .dropdown-menu { width: 100%; text-align: center; }
-  .dropdown-menu>li { display: inline-block; }
-  .filter-container{
-    
-  }
+
 </style>

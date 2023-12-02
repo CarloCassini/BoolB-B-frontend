@@ -36,10 +36,18 @@ export default {
 </script>
 
 <template>
-  <HeroImgUi />
-  <div class="container">
-    <ApartmentsList :colNumSm="12" :colNumMd="6" :colNumLg="3" :apartments="this.apartments" />
+  <div class="scroll-main">
+    
+    <HeroImgUi />
+    <div class="container">
+      <ApartmentsList :colNumSm="12" :colNumMd="6" :colNumLg="3" :apartments="this.apartments" />
+    </div>
   </div>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.scroll-main{
+  height:calc(100vh - 56px);
+  overflow-y:scroll;
+}
+</style>

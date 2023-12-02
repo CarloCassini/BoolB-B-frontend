@@ -5,5 +5,7 @@ export const store = reactive({
   esempio: "valore di ciccio",
   apiUrl:"http://localhost:8000/api",
   storageUrl: "http://localhost:8000/storage/",
-  services:[]
+  services:[],
+  filteredApartments:[]
+  
 });
