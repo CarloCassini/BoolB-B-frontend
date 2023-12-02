@@ -2,12 +2,13 @@
 import axios from "axios";
 // import MyComponent from "./components/MyComponent.vue";
 import ApartmentsList from "../components/apartments/ApartmentsList.vue";
-// import FilterBoxUi from "../components/partials/ui/FiltersBoxUi.vue";
+import FilterBoxUi from "../components/partials/ui/FiltersBoxUi.vue";
 import { store } from "../data/store";
 
 export default {
   data() {
     return {
+      store,
       title: "Search Your perfect Apartment",
       fetch: 0,
       services: [],
@@ -15,19 +16,11 @@ export default {
     };
   },
   components: {
-    ApartmentsList /* FilterBoxUi, */,
+    ApartmentsList,FilterBoxUi,
   },
   methods: {
-    // fetchApartments(apiUri = store.apiUrl + "/apartments/service/" + 1) {
-    //   // console.log("call search");
 
-    //   axios.get(apiUri).then((response) => {
-    //     console.log(response.data.results.data);
-    //     this.apartments = response.data.results.data;
-    //     this.fetch++;
-    //   });
-    // },
-    fetchApartments() {
+/*     fetchApartments() {
       const activeServices = [];
       let distance = 20;
       let beds = 1;
@@ -62,7 +55,7 @@ export default {
         .then((response) => {
           this.apartments = response.data.data;
         });
-    },
+    }, */
     fetchServices() {
       axios.get(store.apiUrl + "/services").then((response) => {
         this.services = response.data.map((service) => {
@@ -75,14 +68,14 @@ export default {
     },
     toggleService(service) {
       service.active = !service.active;
-      this.fetchApartments();
+      // this.fetchApartments();
     },
   },
   created() {
     this.fetchServices();
   },
   mounted() {
-    this.fetchApartments();
+    // this.fetchApartments();
   },
 };
 </script>
@@ -91,7 +84,7 @@ export default {
   <div class="container">
     <h1>{{ title }}</h1>
     <hr />
-    <div class="card" data-bs-theme="light">
+<!--     <div class="card" data-bs-theme="light">
       <div class="card-header text-center">
         <h5>Filters</h5>
       </div>
@@ -131,13 +124,13 @@ export default {
         />
       </div>
       <div class="card-footer"></div>
-    </div>
-    <!--  <FilterBoxUi /> -->
+    </div> -->
     <!-- <div @click="fetchApartments()" class="btn">ciccio</div> -->
+     <FilterBoxUi />
     <div class="row">
       <div class="col-md-6">
         <!-- <ApartmentsList :apartments="this.apartments" :key="fetch" /> -->
-        <ApartmentsList :colNum="4" :apartments="this.apartments" />
+        <ApartmentsList :key="fetch" :colNumSm="12" :colNumMd="6" :colNumLg="4" :apartments="store.filteredApartments" />
       </div>
       <div class="col-md-6">mappa</div>
     </div>
