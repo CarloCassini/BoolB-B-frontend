@@ -20,7 +20,7 @@ export default {
     FiltersBoxUi,
   },
   methods: {
-    fetchApartments(apiUri = store.apiUrl + "/apartments") {
+    fetchApartments(apiUri = store.apiUrl + "/sponsored") {
       console.log("call");
       console.log(apiUri);
 
