@@ -100,6 +100,7 @@ export default {
         
 
     },
+    // * get all apartment filtered
     getApartments(){
         // todo DEVI RECUPERARE ANCHE I SERVIZI DALL URL SENZA CHE SI SPACCHI TUTTO
         // if (this.$route.params.activeServices) console.log('esiste');
@@ -147,6 +148,18 @@ export default {
           console.log(store.filteredApartments);
           
         });
+    },
+    fillFromSuggestion(event){
+      let whereEl = document.getElementById('where')
+      let list = document.getElementById('sg-list')
+      whereEl.value = event.target.innerHTML
+      list.classList.add('d-none')
+
+    },
+    handleQuery(){
+      let list = document.getElementById('sg-list')
+      list.classList.remove('d-none')
+
     }
   },
 
@@ -166,23 +179,43 @@ export default {
         <div class="d-flex justify-content-center">
 
 
-            <div class="d-flex flex-column">
+            <div class="d-flex flex-column suggestions-container align-items-center">
                 <span>Where</span>
-                <input type="text" class="input-styler big-input">
+                <input @change="handleQuery()" type="text" class="input-styler big-input" id="where">
+                <ul class="suggestions p-0 d-none" id="sg-list">
+                  <li @click="fillFromSuggestion($event)">
+                    test
+                  </li>
+                  <li @click="fillFromSuggestion($event)">
+                    testds
+                  </li>
+                  <li @click="fillFromSuggestion($event)">
+                    testdssdfsd
+                  </li>
+                  <li @click="fillFromSuggestion($event)">
+                    diofa
+                  </li>
+                  <li @click="fillFromSuggestion($event)">
+                    sanremo
+                  </li>
+                  <li @click="fillFromSuggestion($event)">
+                    torino
+                  </li>
+                </ul>
             </div>
-            <div class="d-flex flex-column">
+            <div class="d-flex flex-column align-items-center">
                 <span>Rooms</span>
                 <input @change="handleInputs()" type="number" id="rooms" class="small-input bg-light text-dark input-styler">
             </div>
-            <div class="d-flex flex-column">
+            <div class="d-flex flex-column align-items-center">
                 <span>Beds</span>
                 <input @change="handleInputs()" type="number" id="beds" class="small-input bg-light text-dark input-styler">
             </div>
-            <div class="d-flex flex-column">
+            <div class="d-flex flex-column align-items-center">
                 <span>Distance</span>
                 <input @change="handleInputs()" type="range"  id="distance"  class="range-styler mx-3" min="0" max="30">
             </div>
-            <div class="d-flex flex-column">
+            <div class="d-flex flex-column align-items-center">
                 <span>Services</span>
                 <button class="btn-style" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                    +
@@ -216,15 +249,48 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+
+.suggestions-container{
+  position: relative;
+}
+.suggestions{
+  background-color: #ddd;
+  z-index: 9;
+  border: 1px solid #ff7977;
+  border-radius: .5rem;
+  box-shadow: 0px 5px 15px 3px #222222;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  max-height: 5rem;
+  overflow-y: auto;
+  list-style: none;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+  ::-webkit-scrollbar{
+    display: none;
+  }
+  li{
+    cursor: pointer;
+  }
+  li:hover{
+    // border-bottom: 1px solid #ff7977;
+    box-shadow: inset 0 -2px 2px 0px #ff7977;
+
+    background-color: #fff;
+    
+  }
+}
 .disabled{
     filter: grayscale(1);
 }
 
 .small-input{
-    width: 5rem;
+    max-width: 5rem;
 }
 .big-input{
-    width: 20rem;
+    max-width: 20rem;
 }
 .input-styler{
     background-color: transparent;
@@ -255,6 +321,7 @@ input[type="range"] {
   outline: none; /* Rimuove il bordo di contorno */
   border-radius: 5px; /* Bordo arrotondato */
   margin: 10px 0; /* Margine superiore e inferiore */
+  
 }
 /* Stili per il cursore del tipo "range" */
 input[type="range"]::-webkit-slider-thumb {
@@ -265,17 +332,33 @@ input[type="range"]::-webkit-slider-thumb {
   cursor: pointer; /* Cambia il cursore al passaggio sopra */
   -webkit-appearance: none; /* Nasconde l'aspetto predefinito del cursore in WebKit (Chrome, Safari, ecc.) */
   margin-top: 0px; /* Alcuni piccoli aggiustamenti di posizione */
-}
+  transition: 1s;
 
+}
+input[type="range"]::-webkit-slider-thumb:hover {
+    transform: translate(2px, -2px);
+    box-shadow: 0px 3px 10px 1px #222222;
+    transition: .5s ease-in-out;
+    
+}
 input[type=number]::-webkit-inner-spin-button {
   -webkit-appearance: none;
 }
 .btn-style{
     background-color: transparent;
-    border-radius: 1rem;
+    border-radius: .5rem;
     border: 1px solid #ff7977;
     color: #ff7977;
     font-weight: 700;
+    transition: 1s;
+  }
+  .btn-style:hover{
+    
+    background-color: #ff7977;
+    color: #ffffff;
+    transform: translate(2px, -2px);
+    box-shadow: -3px 3px 10px 1px #222222;
+    transition: .5s ease-in-out;
 }
 
 

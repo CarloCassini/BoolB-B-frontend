@@ -1,6 +1,6 @@
 <script>
 // import MyComponent from "./components/MyComponent.vue";
-import SearchBarUi from "./SearchBarUi.vue";
+
 import { store } from "../../../data/store.js";
 
 export default {
@@ -12,7 +12,7 @@ export default {
   },
 
   components: {
-    SearchBarUi,
+
   },
 
 };
