@@ -17,8 +17,8 @@ export default {
   components: {
     ApartmentsList,
     HeroImgUi,
-    FiltersBoxUi
-},
+    FiltersBoxUi,
+  },
   methods: {
     fetchApartments(apiUri = store.apiUrl + "/apartments") {
       console.log("call");
@@ -37,32 +37,33 @@ export default {
 
 <template>
   <div class="scroll-main">
-    
     <!-- <HeroImgUi /> -->
     <div class="text-center my-5">
-
       <h2 class="display-6" style="color: #ffffff">Welcome to</h2>
       <h1 class="display-3" style="color: #ff7977">{{ title }}</h1>
     </div>
     <div class="container">
       <div class="search-container my-5">
         <FiltersBoxUi />
-
       </div>
-      <ApartmentsList :colNumSm="12" :colNumMd="6" :colNumLg="3" :apartments="this.apartments" />
+      <ApartmentsList
+        :colNumSm="12"
+        :colNumMd="6"
+        :colNumLg="3"
+        :apartments="this.apartments"
+      />
     </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
-.scroll-main{
-  height:calc(100vh - 56px);
-  overflow-y:scroll;
+.scroll-main {
+  height: calc(100vh - 56px);
+  overflow-y: scroll;
 }
-.search-container{
+.search-container {
   position: sticky;
   top: 10px;
   z-index: 2;
 }
-
 </style>
