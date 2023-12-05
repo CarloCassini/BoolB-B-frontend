@@ -252,7 +252,7 @@ export default {
             class="modal-title fs-5"
             id="exampleModalLabel"
           >
-            Nuovo Messaggio
+            New message
           </h1>
           <h1 v-if="showSuccess" class="m-0">Messaggio Inviato</h1>
           <button
@@ -265,12 +265,12 @@ export default {
         <div v-if="!showSuccess" class="modal-body">
           <form method="post" id="myForm" @submit.prevent="sendMessage()">
             <div class="input_container ">
-              <label class="input_label text-gradient" for="name"
+              <label class="input_label text-gradient me-3" for="name"
                 >Name</label
               >
               <input
                 type="name"
-                class="input_field "
+                class="form-control "
                 id="name"
                 v-model="name"
                 ref="name"
@@ -281,12 +281,12 @@ export default {
               <div class="error"></div>
             </div>
             <div class="input_container mt-3">
-              <label class="input_label text-gradient" for="surname"
+              <label class="input_label text-gradient me-3" for="surname"
                 >Surname</label
               >
               <input
                 type="surname"
-                class="input_field"
+                class="form-control"
                 id="surname"
                 v-model="surname"
                 ref="surname"
@@ -297,12 +297,12 @@ export default {
               <div class="error"></div>
             </div>
             <div class="input_container">
-              <label class="input_label text-gradient mt-3" for="email_sender"
+              <label class="input_label text-gradient mt-3 me-3" for="email_sender"
                 >Email</label
               >
               <input
                 type="email"
-                class="input_field"
+                class="form-control"
                 id="sender_email"
                 v-model="email_sender"
                 ref="email"
@@ -312,14 +312,14 @@ export default {
               />
               <div class="error"></div>
             </div>
-            <div class="input_container">
+            <div class="input_container mt-3">
               <label for="text_message" class="input_label text-gradient"
                 >Descrizione</label
               >
               <textarea
                 class="form-control"
                 id="message"
-                rows="3"
+                rows="4"
                 v-model="text_message"
                 ref="message"
                 @input="validate"
@@ -337,7 +337,7 @@ export default {
             <div class="modal-footer justify-content-between">
               <button
                 type="button"
-                class="btn btn-secondary"
+                class="btn btn-danger"
                 data-bs-dismiss="modal"
               >
                 Chiudi
@@ -345,7 +345,7 @@ export default {
               <button
                 v-if="!showSuccess"
                 type="submit"
-                class="styled-btn"
+                class="btn btn-success"
                 @click="sendMessage"
               >
                 Invia
