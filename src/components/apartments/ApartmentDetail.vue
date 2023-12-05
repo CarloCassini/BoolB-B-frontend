@@ -69,8 +69,8 @@ export default {
           sender_email: document.getElementById("sender_email").value,
           message: document.getElementById("message").value,
           apartment_id: this.apartment.id,
-          name: "ciccio",
-          surname: "cicciolino",
+          name: this.name,
+          surname: this.surname,
         };
         console.log(this.store.apiUrl + "message/store");
         console.log(data);
@@ -264,11 +264,42 @@ export default {
         </div>
         <div v-if="!showSuccess" class="modal-body">
           <form method="post" id="myForm" @submit.prevent="sendMessage()">
+            <div class="input_container ">
+              <label class="input_label text-gradient" for="name"
+                >Name</label
+              >
+              <input
+                type="name"
+                class="input_field "
+                id="name"
+                v-model="name"
+                ref="name"
+                @input="validate"
+                @keydown.enter.prevent="preventFormSubmitOnEnter"
+                autocomplete="name"
+              />
+              <div class="error"></div>
+            </div>
+            <div class="input_container mt-3">
+              <label class="input_label text-gradient" for="surname"
+                >Surname</label
+              >
+              <input
+                type="surname"
+                class="input_field"
+                id="surname"
+                v-model="surname"
+                ref="surname"
+                @input="validate"
+                @keydown.enter.prevent="preventFormSubmitOnEnter"
+                autocomplete="surname"
+              />
+              <div class="error"></div>
+            </div>
             <div class="input_container">
-              <label class="input_label text-gradient" for="email_sender"
+              <label class="input_label text-gradient mt-3" for="email_sender"
                 >Email</label
               >
-              <font-awesome-icon :icon="['fas', 'envelope']" class="icon" />
               <input
                 type="email"
                 class="input_field"
