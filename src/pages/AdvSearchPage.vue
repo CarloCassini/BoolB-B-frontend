@@ -72,6 +72,15 @@ export default {
       service.active = !service.active;
       // this.fetchApartments();
     },
+
+    setError(element, message) {
+      const inputControl = element.parentElement;
+      const errorDisplay = inputControl.querySelector(".error");
+
+      errorDisplay.innerText = message;
+      inputControl.classList.add("error");
+      inputControl.classList.remove("success");
+    },
   },
   created() {
     this.fetchServices();
