@@ -25,6 +25,7 @@ export default {
       .get(store.apiUrl + "/apartments/" + this.$route.params.id)
       .then((response) => {
         this.apartment = response.data.results;
+        console.log(response.data.results);
         console.log(this.apartment.latitude);
         console.log(this.apartment.longitude);
 
@@ -35,11 +36,11 @@ export default {
           this.map = tt.map({
             key: "t7a52T1QnfuvZp7X85QvVlLccZeC5a9P",
             container: "map",
-            center: [latitude, longitude],
-            zoom: 7,
+            center: [longitude, latitude],
+            zoom: 10,
           });
           this.map.on("load", () => {
-            let center = [latitude, longitude];
+            let center = [longitude, latitude];
             let marker = new tt.Marker().setLngLat(center).addTo(this.map);
           });
         } else {
