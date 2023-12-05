@@ -1,59 +1,64 @@
 <script>
+import axios from "axios";
+import tt from "@tomtom-international/web-sdk-maps";
+import "@tomtom-international/web-sdk-maps";
+import { store } from "../../../data/store";
+
 export default {
   data() {
     return {
-      map: null,
-      apiKey: "LA_TUA_CHIAVE_API_TOMTOM",
-      address: "Via esempio, 123, Città",
+      apartment: null,
+      store,
     };
   },
-  mounted() {
-    // Inizializzazione della mappa al momento del caricamento del componente
-    this.initMap();
-  },
   methods: {
-    initMap() {
-      tt.setProductInfo("VueTomTomExample", "1.0.0"); // Opzionale
-
-      // Inizializzazione della mappa utilizzando Vue refs
-      this.map = tt.map({
-        key: this.apiKey,
-        container: this.$refs.map,
-        style: "tomtom://vector/1/basic-main",
-        center: [0, 0], // Coordinate di default, verranno sovrascritte
-        zoom: 15,
-      });
-
-      // Effettua la richiesta di geocoding a TomTom API per ottenere le coordinate dall'indirizzo
-      tt.services
-        .geocodeSearch({ query: this.address })
-        .go()
+    fetchMap() {
+      axios
+        .get(this.store.apiUrl + "/apartments/" + this.$route.params.id)
         .then((response) => {
-          position = response.results[0].position;
-          this.map.setCenter([position.lat, position.lon]);
+          this.apartment = response.data.results;
+          console.log(this.apartment.latitude);
+          console.log(this.apartment.longitude);
 
-          // Aggiungi un marker per l'appartamento
-          marker = new tt.Marker()
-            .setLngLat([position.lon, position.lat])
-            .addTo(this.map);
+          if (this.apartment.latitude && this.apartment.longitude) {
+            const latitude = parseFloat(this.apartment.latitude);
+            const longitude = parseFloat(this.apartment.longitude);
+
+            this.map = tt.map({
+              key: "t7a52T1QnfuvZp7X85QvVlLccZeC5a9P",
+              container: "map",
+              center: [latitude, longitude],
+              zoom: 7,
+            });
+
+            this.map.on("load", () => {
+              let center = [latitude, longitude];
+              let marker = new tt.Marker().setLngLat(center).addTo(this.map);
+            });
+          } else {
+            console.error("I dati dell'appartamento non sono validi!");
+          }
         })
-        .catch((error) => {
-          console.error(
-            "Si è verificato un errore durante il geocoding:",
-            error
-          );
-        });
+        .catch((error) => console.error(error));
     },
+  },
+
+  mounted() {
+    this.map = null;
+    this.fetchMap();
   },
 };
 </script>
 
 <template>
   <div>
-    <h1>Dettaglio dell'Appartamento</h1>
-    <!-- Elemento HTML per la mappa -->
-    <div ref="map" class="map"></div>
+    <div id="map" class="map"></div>
   </div>
 </template>
 
-<style></style>
+<style lang="scss" scoped>
+.map {
+  height: 400px;
+  width: 100%;
+}
+</style>
