@@ -1,5 +1,5 @@
 <script>
-import SearchBarUi from "./SearchBarUi.vue";
+import FiltersBoxUi from "./FiltersBoxUi.vue";
 
 export default {
   data() {
@@ -9,8 +9,9 @@ export default {
   },
 
   components: {
-    SearchBarUi,
-  },
+  
+    FiltersBoxUi
+},
 };
 </script>
 
@@ -21,7 +22,8 @@ export default {
     <h2 class="display-6" style="color: #ffffff">Welcome to</h2>
     <h1 class="display-3" style="color: #ff7977">{{ title }}</h1>
     
-    <!-- <SearchBarUi /> -->
+    <FiltersBoxUi />
+
   </div>
 </div>
 </template>

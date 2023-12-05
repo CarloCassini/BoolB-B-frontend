@@ -2,32 +2,27 @@
 import axios from "axios";
 // import MyComponent from "./components/MyComponent.vue";
 import ApartmentsList from "../components/apartments/ApartmentsList.vue";
-// import FilterBoxUi from "../components/partials/ui/FiltersBoxUi.vue";
+import FilterBoxUi from "../components/partials/ui/FiltersBoxUi.vue";
+import HeadingTxtUi from "../components/partials/ui/HeadingTxtUi.vue";
 import { store } from "../data/store";
 
 export default {
   data() {
     return {
-      title: "Search Your perfect Apartment",
+      store,
+      subTitle: "Search Your Next",
+      title: "Apartment",
       fetch: 0,
       services: [],
       apartments: [],
     };
   },
   components: {
-    ApartmentsList /* FilterBoxUi, */,
+    ApartmentsList,FilterBoxUi,HeadingTxtUi
   },
   methods: {
-    // fetchApartments(apiUri = store.apiUrl + "/apartments/service/" + 1) {
-    //   // console.log("call search");
 
-    //   axios.get(apiUri).then((response) => {
-    //     console.log(response.data.results.data);
-    //     this.apartments = response.data.results.data;
-    //     this.fetch++;
-    //   });
-    // },
-    fetchApartments() {
+/*     fetchApartments() {
       const activeServices = [];
       let distance = 20;
       let beds = 1;
@@ -62,7 +57,7 @@ export default {
         .then((response) => {
           this.apartments = response.data.data;
         });
-    },
+    }, */
     fetchServices() {
       axios.get(store.apiUrl + "/services").then((response) => {
         this.services = response.data.map((service) => {
@@ -75,69 +70,39 @@ export default {
     },
     toggleService(service) {
       service.active = !service.active;
-      this.fetchApartments();
+      // this.fetchApartments();
+    },
+
+    setError(element, message) {
+      const inputControl = element.parentElement;
+      const errorDisplay = inputControl.querySelector(".error");
+
+      errorDisplay.innerText = message;
+      inputControl.classList.add("error");
+      inputControl.classList.remove("success");
     },
   },
   created() {
     this.fetchServices();
   },
   mounted() {
-    this.fetchApartments();
+    // this.fetchApartments();
   },
 };
 </script>
 
 <template>
   <div class="container">
-    <h1>{{ title }}</h1>
-    <hr />
-    <div class="card" data-bs-theme="light">
-      <div class="card-header text-center">
-        <h5>Filters</h5>
-      </div>
-      <div class="card-body">
-        <span> services </span>
-        <span
-          v-for="(service, index) in this.services"
-          :class="{ disabled: !service.active }"
-          class="badge me-2 my-2 bg-gradient bg-dark fs-5"
-          @click="toggleService(service)"
-        >
-          <font-awesome-icon :icon="service.symbol" style="color: #ff7977" />
-        </span>
-        <hr />
-        <span> distance </span>
-        <input
-          @change="fetchApartments()"
-          type="number"
-          id="distance"
-          class="bg-light text-dark border"
-        />
-        <hr />
-        <span> beds </span>
-        <input
-          @change="fetchApartments()"
-          type="number"
-          id="beds"
-          class="bg-light text-dark border"
-        />
-        <hr />
-        <span> rooms </span>
-        <input
-          @change="fetchApartments()"
-          type="number"
-          id="rooms"
-          class="bg-light text-dark border"
-        />
-      </div>
-      <div class="card-footer"></div>
+    <HeadingTxtUi :subtitle="this.subTitle" :title="this.title" />
+    
+    <div class="my-5 search-container">
+      <FilterBoxUi />
+
     </div>
-    <!--  <FilterBoxUi /> -->
-    <!-- <div @click="fetchApartments()" class="btn">ciccio</div> -->
     <div class="row">
       <div class="col-md-6">
         <!-- <ApartmentsList :apartments="this.apartments" :key="fetch" /> -->
-        <ApartmentsList :colNum="4" :apartments="this.apartments" />
+        <ApartmentsList :key="fetch" :colNumSm="12" :colNumMd="6" :colNumLg="4" :apartments="store.filteredApartments" />
       </div>
       <div class="col-md-6">mappa</div>
     </div>
@@ -147,5 +112,10 @@ export default {
 <style lang="scss" scoped>
 .disabled {
   filter: grayscale(1);
+}
+.search-container{
+  position: sticky;
+  top: 60px;
+  z-index: 2;
 }
 </style>

@@ -3,24 +3,24 @@ import axios from "axios";
 
 import ApartmentsList from "../components/apartments/ApartmentsList.vue";
 import HeroImgUi from "../components/partials/ui/HeroImgUi.vue";
-import SearchBarUi from "../components/partials/ui/SearchBarUi.vue";
 
 import { store } from "../data/store";
+import FiltersBoxUi from "../components/partials/ui/FiltersBoxUi.vue";
 
 export default {
   data() {
     return {
-      title: "Welcome to Boolbnb",
+      title: "Boolbnb",
       apartments: [],
     };
   },
   components: {
     ApartmentsList,
     HeroImgUi,
-    SearchBarUi,
+    FiltersBoxUi,
   },
   methods: {
-    fetchApartments(apiUri = store.apiUrl + "/apartments") {
+    fetchApartments(apiUri = store.apiUrl + "/sponsored") {
       console.log("call");
       console.log(apiUri);
 
@@ -36,10 +36,34 @@ export default {
 </script>
 
 <template>
-  <HeroImgUi />
-  <div class="container">
-    <ApartmentsList :colNumSm="12" :colNumMd="6" :colNumLg="3" :apartments="this.apartments" />
+  <div class="scroll-main">
+    <!-- <HeroImgUi /> -->
+    <div class="text-center my-5">
+      <h2 class="display-6" style="color: #ffffff">Welcome to</h2>
+      <h1 class="display-3" style="color: #ff7977">{{ title }}</h1>
+    </div>
+    <div class="container">
+      <div class="search-container my-5">
+        <FiltersBoxUi />
+      </div>
+      <ApartmentsList
+        :colNumSm="12"
+        :colNumMd="6"
+        :colNumLg="3"
+        :apartments="this.apartments"
+      />
+    </div>
   </div>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.scroll-main {
+  height: calc(100vh - 56px);
+  overflow-y: scroll;
+}
+.search-container {
+  position: sticky;
+  top: 10px;
+  z-index: 2;
+}
+</style>
