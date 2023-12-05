@@ -21,6 +21,7 @@ export default {
     Map,
   },
   mounted() {
+    //chiamata appartamento singolo per latitudine e longitudine (TomTom)
     axios
       .get(store.apiUrl + "/apartments/" + this.$route.params.id)
       .then((response) => {
@@ -37,7 +38,7 @@ export default {
             key: "t7a52T1QnfuvZp7X85QvVlLccZeC5a9P",
             container: "map",
             center: [longitude, latitude],
-            zoom: 10,
+            zoom: 16,
           });
           this.map.on("load", () => {
             let center = [longitude, latitude];
