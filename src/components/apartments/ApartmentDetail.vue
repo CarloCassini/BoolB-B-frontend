@@ -9,6 +9,7 @@ export default {
     return {
       apartment: null,
       text_message: "",
+      store,
     };
   },
 
@@ -28,6 +29,7 @@ export default {
   methods: {
       // validate & send form
       sendMessage(event) {
+        // console.log('ciccio');
       if (!this.validateForm()) {
         event.preventDefault();
       } else {
@@ -35,17 +37,21 @@ export default {
         if (this.isSending) {
           return;
         }
-
+       
         this.isSending = true;
 
         let data = {
-          email_sender: this.email_sender,
-          text_message: this.text_message,
-          apartment_id: this.apartment_id,
+          sender_email: document.getElementById('sender_email').value,
+          message: document.getElementById('message').value,
+          apartment_id: this.apartment.id,
+          name: 'ciccio',
+          surname: 'cicciolino',
         };
+        console.log(this.store.apiUrl + "message/store");
+        console.log(data);
 
         axios
-          .post(this.store.backendURL + "api/messages/store", data)
+          .post(this.store.apiUrl + "/message", data)
           .then((response) => {
             this.isSending = false;
 
@@ -207,30 +213,30 @@ export default {
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div v-if="!showSuccess" class="modal-body">
-            <form @submit.prevent="sendMessage()">
+            <form method="post" id="myForm" @submit.prevent="sendMessage()">
               <div class="input_container">
                 <label class="input_label text-gradient" for="email_sender">Email</label>
                 <font-awesome-icon :icon="['fas', 'envelope']" class="icon" />
-                <input type="email" class="input_field" id="email_sender" v-model="email_sender" ref="email"
+                <input type="email" class="input_field" id="sender_email" v-model="email_sender" ref="email"
                   @input="validate" @keydown.enter.prevent="preventFormSubmitOnEnter" autocomplete="email" />
                 <div class="error"></div>
               </div>
               <div class="input_container">
                 <label for="text_message" class="input_label text-gradient">Descrizione</label>
-                <textarea class="form-control" id="text_message" rows="3" v-model="text_message" ref="message"
+                <textarea class="form-control" id="message" rows="3" v-model="text_message" ref="message"
                   @input="validate" @keydown.enter.prevent="preventFormSubmitOnEnter" for="text_message"></textarea>
                 <div class="error"></div>
               </div>
               <input type="hidden" name="apartment_id" for="apartment_id" v-model="apartment_id" />
+              <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                  Chiudi
+                </button>
+                <button v-if="!showSuccess" type="submit" class="styled-btn" @click="sendMessage">
+                  Invia
+                </button>
+              </div>
             </form>
-          </div>
-          <div class="modal-footer justify-content-between">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-              Chiudi
-            </button>
-            <button v-if="!showSuccess" type="submit" class="styled-btn" @click="sendMessage">
-              Invia
-            </button>
           </div>
         </div>
       </div>
