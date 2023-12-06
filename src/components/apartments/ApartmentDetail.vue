@@ -26,9 +26,6 @@ export default {
       .get(store.apiUrl + "/apartments/" + this.$route.params.id)
       .then((response) => {
         this.apartment = response.data.results;
-        console.log(response.data.results);
-        console.log(this.apartment.latitude);
-        console.log(this.apartment.longitude);
 
         if (this.apartment.latitude && this.apartment.longitude) {
           const latitude = parseFloat(this.apartment.latitude);
@@ -54,15 +51,11 @@ export default {
   //--script per validazione lato client--//
 
   methods: {
-    
     // validate & send form
     sendMessage(event) {
-
-      let flag=true;
-      this.cechkValidation;
-
+      let flag = true;
+      flag = this.cechkValidation(flag);
       console.log(flag);
-     
       if (!flag) {
         event.preventDefault();
       } else {
@@ -77,12 +70,11 @@ export default {
           sender_email: document.getElementById("sender_email").value,
           message: document.getElementById("message").value,
           apartment_id: this.apartment.id,
-          name: this.name,
-          surname: this.surname,
+          name: document.getElementById("name").value,
+          surname: document.getElementById("surname").value,
         };
-        console.log(this.store.apiUrl + "message/store");
-        console.log(data);
 
+        console.log(data);
         axios
           .post(this.store.apiUrl + "/message", data)
           .then((response) => {
@@ -105,25 +97,21 @@ export default {
     },
 
     // validate & send form
-    cechkValidation() {
-      
-
+    cechkValidation(flag) {
+      flag = true;
       // Exclude validation for fields with the class 'no-validation'
-      console.log('cazzo');
-
-      const form = document.getElementById('myForm');
-
-  
-        const fieldsToValidate = form.querySelectorAll('.form-control:not(.no-validation)');
-        Array.from(fieldsToValidate).forEach(field => {
+      const form = document.getElementById("myForm");
+      const fieldsToValidate = form.querySelectorAll(
+        ".form-control:not(.no-validation)"
+      );
+      Array.from(fieldsToValidate).forEach((field) => {
         if (!field.checkValidity()) {
+          flag = false;
+        }
+      });
 
-          console.log('ciccio');
-        flag=false;
-      }
-    });
-
-form.classList.add('was-validated');
+      form.classList.add("was-validated");
+      return flag;
     },
 
     // Reload the page
@@ -293,14 +281,19 @@ form.classList.add('was-validated');
           ></button>
         </div>
         <div v-if="!showSuccess" class="modal-body">
-          <form class="needs-validation" method="post" id="myForm" @submit.prevent="sendMessage()">
+          <form
+            class="needs-validation"
+            method="post"
+            id="myForm"
+            @submit.prevent="sendMessage()"
+          >
             <div class="input_container">
               <label class="input_label text-gradient me-3" for="name"
                 >Name</label
               >
               <input
                 type="name"
-                class="form-control "
+                class="form-control"
                 id="name"
                 v-model="name"
                 ref="name"
@@ -321,23 +314,22 @@ form.classList.add('was-validated');
               />
             </div>
             <div class="input_container">
-              <label class="input_label text-gradient mt-3 me-3" for="email_sender"
+              <label
+                class="input_label text-gradient mt-3 me-3"
+                for="email_sender"
                 >Email</label
               >
               <input
                 type="email"
-                class="form-control" 
+                class="form-control"
                 id="sender_email"
                 v-model="email_sender"
                 ref="email"
                 autocomplete="email"
                 required
               />
-               <!-- {{-- errore lato client --}} -->
-               <div class="invalid-feedback">
-                    email can't be null.
-                </div>
-                
+              <!-- {{-- errore lato client --}} -->
+              <div class="invalid-feedback">email can't be null.</div>
             </div>
             <div class="input_container mt-3">
               <label for="text_message" class="input_label text-gradient"
@@ -353,9 +345,7 @@ form.classList.add('was-validated');
                 required
               ></textarea>
               <!-- {{-- errore lato client --}} -->
-              <div class="invalid-feedback">
-                    message can't be null.
-              </div>
+              <div class="invalid-feedback">message can't be null.</div>
             </div>
             <input
               type="hidden"
