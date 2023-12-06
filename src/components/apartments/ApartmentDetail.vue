@@ -51,11 +51,19 @@ export default {
       .catch((error) => console.error(error));
   },
 
+  //--script per validazione lato client--//
+
   methods: {
+    
     // validate & send form
     sendMessage(event) {
-      // console.log('ciccio');
-      if (!this.validateForm()) {
+
+      let flag=true;
+      this.cechkValidation;
+
+      console.log(flag);
+     
+      if (!flag) {
         event.preventDefault();
       } else {
         // Verifica se è già in corso un invio
@@ -94,6 +102,28 @@ export default {
             console.error(error);
           });
       }
+    },
+
+    // validate & send form
+    cechkValidation() {
+      
+
+      // Exclude validation for fields with the class 'no-validation'
+      console.log('cazzo');
+
+      const form = document.getElementById('myForm');
+
+  
+        const fieldsToValidate = form.querySelectorAll('.form-control:not(.no-validation)');
+        Array.from(fieldsToValidate).forEach(field => {
+        if (!field.checkValidity()) {
+
+          console.log('ciccio');
+        flag=false;
+      }
+    });
+
+form.classList.add('was-validated');
     },
 
     // Reload the page
@@ -263,8 +293,8 @@ export default {
           ></button>
         </div>
         <div v-if="!showSuccess" class="modal-body">
-          <form method="post" id="myForm" @submit.prevent="sendMessage()">
-            <div class="input_container ">
+          <form class="needs-validation" method="post" id="myForm" @submit.prevent="sendMessage()">
+            <div class="input_container">
               <label class="input_label text-gradient me-3" for="name"
                 >Name</label
               >
@@ -274,11 +304,8 @@ export default {
                 id="name"
                 v-model="name"
                 ref="name"
-                @input="validate"
-                @keydown.enter.prevent="preventFormSubmitOnEnter"
                 autocomplete="name"
               />
-              <div class="error"></div>
             </div>
             <div class="input_container mt-3">
               <label class="input_label text-gradient me-3" for="surname"
@@ -290,11 +317,8 @@ export default {
                 id="surname"
                 v-model="surname"
                 ref="surname"
-                @input="validate"
-                @keydown.enter.prevent="preventFormSubmitOnEnter"
                 autocomplete="surname"
               />
-              <div class="error"></div>
             </div>
             <div class="input_container">
               <label class="input_label text-gradient mt-3 me-3" for="email_sender"
@@ -302,15 +326,18 @@ export default {
               >
               <input
                 type="email"
-                class="form-control"
+                class="form-control" 
                 id="sender_email"
                 v-model="email_sender"
                 ref="email"
-                @input="validate"
-                @keydown.enter.prevent="preventFormSubmitOnEnter"
                 autocomplete="email"
+                required
               />
-              <div class="error"></div>
+               <!-- {{-- errore lato client --}} -->
+               <div class="invalid-feedback">
+                    email can't be null.
+                </div>
+                
             </div>
             <div class="input_container mt-3">
               <label for="text_message" class="input_label text-gradient"
@@ -322,11 +349,13 @@ export default {
                 rows="4"
                 v-model="text_message"
                 ref="message"
-                @input="validate"
-                @keydown.enter.prevent="preventFormSubmitOnEnter"
                 for="text_message"
+                required
               ></textarea>
-              <div class="error"></div>
+              <!-- {{-- errore lato client --}} -->
+              <div class="invalid-feedback">
+                    message can't be null.
+              </div>
             </div>
             <input
               type="hidden"
