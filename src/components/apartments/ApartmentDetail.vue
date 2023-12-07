@@ -319,7 +319,7 @@ export default {
               <label
                 class="input_label text-gradient mt-3 me-3"
                 for="email_sender"
-                >Email</label
+                >Email*</label
               >
               <input
                 type="email"
@@ -335,7 +335,7 @@ export default {
             </div>
             <div class="input_container mt-3">
               <label for="text_message" class="input_label text-gradient"
-                >Descrizione</label
+                >Descrizione*</label
               >
               <textarea
                 class="form-control"
