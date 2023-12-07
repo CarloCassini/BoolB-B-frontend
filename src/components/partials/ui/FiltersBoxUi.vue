@@ -10,15 +10,38 @@ export default {
         store,
         services: [],
         tempActiveServices:[],
-        tempDistance:20,
-        tempBeds:1,
-        tempRooms:1,
+        tempDistance:this.$route.params.distance ? this.$route.params.distance :20,
+        tempBeds: this.$route.params.beds ? this.$route.params.beds: 1,
+        tempRooms:this.$route.params.rooms ? this.$route.params.rooms : 1,
         searchTerm: '',
         searchResults: [],
-        addressLong:0,
-        addressLat:0
+        addressLong:this.$route.params.long ? this.$route.params.long : 0,
+        addressLat:this.$route.params.lat ? this.$route.params.lat : 0,
+        pagination :{
+        next: null,
+        prev: null,
+        links: null
+        // todo DECIDERE COME PASSARE PAGINATION DOVREI METTERE UN VALORE A STORE PERCHE QUESTO COMPONENTE NN HA IL TEMPLATE DELLA PAGINATION
+        // todo DECIDERE COME PASSARE PAGINATION DOVREI METTERE UN VALORE A STORE PERCHE QUESTO COMPONENTE NN HA IL TEMPLATE DELLA PAGINATION
+        // todo DECIDERE COME PASSARE PAGINATION DOVREI METTERE UN VALORE A STORE PERCHE QUESTO COMPONENTE NN HA IL TEMPLATE DELLA PAGINATION
+        // todo DECIDERE COME PASSARE PAGINATION DOVREI METTERE UN VALORE A STORE PERCHE QUESTO COMPONENTE NN HA IL TEMPLATE DELLA PAGINATION
+        // todo DECIDERE COME PASSARE PAGINATION DOVREI METTERE UN VALORE A STORE PERCHE QUESTO COMPONENTE NN HA IL TEMPLATE DELLA PAGINATION
+        // todo DECIDERE COME PASSARE PAGINATION DOVREI METTERE UN VALORE A STORE PERCHE QUESTO COMPONENTE NN HA IL TEMPLATE DELLA PAGINATION
+        // !!!! DECIDERE COME PASSARE PAGINATION DOVREI METTERE UN VALORE A STORE PERCHE QUESTO COMPONENTE NN HA IL TEMPLATE DELLA PAGINATION
+        // todo DECIDERE COME PASSARE PAGINATION DOVREI METTERE UN VALORE A STORE PERCHE QUESTO COMPONENTE NN HA IL TEMPLATE DELLA PAGINATION
+        // todo DECIDERE COME PASSARE PAGINATION DOVREI METTERE UN VALORE A STORE PERCHE QUESTO COMPONENTE NN HA IL TEMPLATE DELLA PAGINATION
+        // todo DECIDERE COME PASSARE PAGINATION DOVREI METTERE UN VALORE A STORE PERCHE QUESTO COMPONENTE NN HA IL TEMPLATE DELLA PAGINATION
+        // todo DECIDERE COME PASSARE PAGINATION DOVREI METTERE UN VALORE A STORE PERCHE QUESTO COMPONENTE NN HA IL TEMPLATE DELLA PAGINATION
+        // todo DECIDERE COME PASSARE PAGINATION DOVREI METTERE UN VALORE A STORE PERCHE QUESTO COMPONENTE NN HA IL TEMPLATE DELLA PAGINATION
+      }
       }
     },
+  computed: {
+    isSearchRoute() {
+      // Controlla se la parola "search" è presente nella rotta dell'URL
+      return this.$route.fullPath.includes('search');
+    }
+  },
     // components: {
     //   MyComponent,
     // },
@@ -135,6 +158,9 @@ export default {
         .then((response) => {
           store.filteredApartments = response.data.data;
           console.log(store.filteredApartments);
+          this.pagination.prev =response.data.prev_page_url;
+          this.pagination.next =response.data.next_page_url;
+          this.pagination.links =response.data.links;
         });
     },
         fillFromSuggestion(event) {
@@ -190,31 +216,31 @@ export default {
   <div class="card" data-bs-theme="light">
     <div class="card-body">
         <!--* inputs -->
-        <div class="d-flex justify-content-center flex-wrap">
+        <div class="d-flex justify-content-center flex-wrap w-100">
 
 
-            <div class="d-flex flex-column suggestions-container align-items-center">
+            <div class="d-flex flex-column suggestions-container align-items-center w-50">
                 <span>Where</span>
-                <input @change="handleQuery()" type="text" class="input-styler big-input" id="where">
+                <input @change="handleQuery()" type="text" class="input-styler big-input w-100" id="where">
                 <ul class="suggestions p-0 d-none" id="sg-list">
                   <li v-for="(suggestion, index) in this.searchResults" :key="index" @click="fillFromSuggestion($event)">
                     {{suggestion.address.freeformAddress}}
                   </li>
                 </ul>
             </div>
-            <div class="d-flex flex-column align-items-center">
+            <div class="d-flex flex-column align-items-center"  v-if="isSearchRoute">
                 <span>Rooms</span>
                 <input @change="handleInputs()" type="number" id="rooms" class="small-input text-dark input-styler">
             </div>
-            <div class="d-flex flex-column align-items-center">
+            <div class="d-flex flex-column align-items-center"  v-if="isSearchRoute">
                 <span>Beds</span>
                 <input @change="handleInputs()" type="number" id="beds" class="small-input text-dark input-styler">
             </div>
-            <div class="d-flex flex-column align-items-center">
+            <div class="d-flex flex-column align-items-center"  v-if="isSearchRoute">
                 <span>Distance</span>
-                <input @change="handleInputs()" type="range"  id="distance"  class="range-styler mx-3" min="0" max="30">
+                <input @change="handleInputs()" type="range"  id="distance"  class="range-styler mx-3" min="0" max="300">
             </div>
-            <div class="d-flex flex-column align-items-center">
+            <div class="d-flex flex-column align-items-center"  v-if="isSearchRoute">
                 <span>Services</span>
                 <button class="btn-style" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                    +
@@ -291,7 +317,7 @@ export default {
     max-width: 5rem;
 }
 .big-input{
-    max-width: 20rem;
+    // max-width: 20rem;
 }
 .input-styler{
     background-color: #fff;
