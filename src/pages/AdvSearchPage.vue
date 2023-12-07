@@ -101,8 +101,11 @@ export default {
     </div>
     <div class="row">
       <div class="col-md-6">
-        <!-- <ApartmentsList :apartments="this.apartments" :key="fetch" /> -->
-        <ApartmentsList :key="fetch" :colNumSm="12" :colNumMd="6" :colNumLg="4" :apartments="store.filteredApartments" />
+        <div class="cards-container">
+          
+          <ApartmentsList :key="fetch" :colNumSm="12" :colNumMd="6" :colNumLg="4" :apartments="store.filteredApartments" />
+
+        </div>
       </div>
       <div class="col-md-6">mappa</div>
     </div>
@@ -117,5 +120,10 @@ export default {
   position: sticky;
   top: 60px;
   z-index: 2;
+}
+.cards-container{
+  overflow-y: scroll;
+  overflow-x: hidden;
+  // height: 80vh;
 }
 </style>
