@@ -81,10 +81,12 @@ export default {
             this.isSending = false;
 
             if (response.data.success) {
+              console.log("ci siamo dentro");
               this.showSuccess = true;
               this.resetForm();
               this.reloadPage();
             } else {
+              console.log("cs");
               this.showError = true;
               this.errors = response.data.errors;
             }
