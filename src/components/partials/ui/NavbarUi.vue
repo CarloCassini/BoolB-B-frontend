@@ -69,12 +69,8 @@ export default {
           </li>
 
           <li>
-            <a href="http://localhost:8000/login" class="nav-link"> login </a>
-          </li>
-
-          <li>
-            <a href="http://localhost:8000/register" class="nav-link">
-              Registrati
+            <a href="http://localhost:8000/" class="nav-link">
+              Private section
             </a>
           </li>
         </ul>
