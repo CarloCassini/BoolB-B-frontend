@@ -6,6 +6,7 @@ import ApartmentCard from "./ApartmentCard.vue";
 import Map from "../partials/ui/Map.vue";
 import tt from "@tomtom-international/web-sdk-maps";
 import "@tomtom-international/web-sdk-maps";
+import ContactButton from "../partials/ui/ContactButton.vue";
 
 export default {
   data() {
@@ -19,6 +20,7 @@ export default {
   components: {
     ApartmentCard,
     Map,
+    ContactButton,
   },
   mounted() {
     //chiamata appartamento singolo per latitudine e longitudine (TomTom)
@@ -236,6 +238,7 @@ export default {
   <div class="container">
     <h1 class="m-3">Dettagli appartamento {{ this.$route.params.id }}</h1>
     <ApartmentCard :apartment="apartment" :isDetail="true" v-if="apartment" />
+    <ContactButton v-if="apartment" :apartment_id="this.apartment.id" />
     <div id="map" class="map">
       <Map
         :latitude="apartment.latitude"
@@ -246,15 +249,14 @@ export default {
   </div>
 
   <!-- form messaggio -->
-
-  <button
+  <!-- <button
     type="button"
     class="styled-btn mt-3"
     data-bs-toggle="modal"
     data-bs-target="#exampleModal"
     data-bs-whatever="@fat"
   >
-    Contatta per Info
+    contact the host
   </button>
 
   <div
@@ -330,7 +332,6 @@ export default {
                 autocomplete="email"
                 required
               />
-              <!-- {{-- errore lato client --}} -->
               <div class="invalid-feedback">email can't be null.</div>
             </div>
             <div class="input_container mt-3">
@@ -346,7 +347,6 @@ export default {
                 for="text_message"
                 required
               ></textarea>
-              <!-- {{-- errore lato client --}} -->
               <div class="invalid-feedback">message can't be null.</div>
             </div>
             <input
@@ -376,7 +376,7 @@ export default {
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 </template>
 
 <style lang="scss" scoped>

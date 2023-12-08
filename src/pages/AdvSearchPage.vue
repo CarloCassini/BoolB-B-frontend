@@ -112,13 +112,6 @@ export default {
             :apartments="store.filteredApartments"
           />
         </div>
-        <div id="map" class="map col-md-6">
-          mappa
-          <!--<Map
-            :latitude="store.filteredApartments.latitude"
-            :longitude="store.filteredApartments.longitude"
-          ></Map>-->
-        </div>
       </div>
     </div>
   </div>
