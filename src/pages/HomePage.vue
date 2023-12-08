@@ -12,7 +12,7 @@ export default {
   data() {
     return {
       title: "Boolbnb",
-      subTitle:"Welcome to",
+      subTitle: "Welcome to",
       apartments: [],
     };
   },
@@ -20,8 +20,8 @@ export default {
     ApartmentsList,
     HeroImgUi,
     FiltersBoxUi,
-    HeadingTxtUi
-},
+    HeadingTxtUi,
+  },
   methods: {
     fetchApartments(apiUri = store.apiUrl + "/sponsored") {
       console.log("call");
@@ -41,7 +41,7 @@ export default {
 <template>
   <div class="scroll-main">
     <!-- <HeroImgUi /> -->
-    
+
     <!-- <div class="text-center my-5">
       <h2 class="display-6" style="color: #ffffff">Welcome to</h2>
       <h1 class="display-3" style="color: #ff7977">{{ title }}</h1>

@@ -59,9 +59,12 @@ export default {
       </div>
     </div>
     <!--* apartment Cover ---------------------------------------------------------------------->
-    <img v-if="!apartment.cover_image_path" src="https://via.placeholder.com/2000x1500.png/333333?text=Placeholder" class="card-img-top h-100" alt="Placeholder">
-    <img v-else-if="apartment.cover_image_path.startsWith('http://') || apartment.cover_image_path.startsWith('https://')" :src="apartment.cover_image_path" class="card-img-top h-100" alt="External Image">
-    <img v-else :src="store.storageUrl + apartment.cover_image_path" class="card-img-top h-100" alt="Uploaded Image"> 
+    <div class="image-card">
+
+      <img v-if="!apartment.cover_image_path" src="https://via.placeholder.com/2000x1500.png/333333?text=Placeholder" class="card-img-top h-100" alt="Placeholder">
+      <img v-else-if="apartment.cover_image_path.startsWith('http://') || apartment.cover_image_path.startsWith('https://')" :src="apartment.cover_image_path" class="card-img-top h-100" alt="External Image">
+      <img v-else :src="store.storageUrl + apartment.cover_image_path" class="card-img-top h-100" alt="Uploaded Image"> 
+    </div>
   </div>
 
   <div class="card-body p-0">
@@ -81,7 +84,7 @@ export default {
 <!-- * card on detail -->
 
 <div v-else class="card mb-3 h-100 bg-light p-0 bg-gradient text-dark">
-  <div>
+  <div class="image-card">
     <img v-if="!apartment.cover_image_path" src="https://via.placeholder.com/2000x1500.png/333333?text=Placeholder" class="card-img-top h-100" alt="Placeholder">
     <img v-else-if="apartment.cover_image_path.startsWith('http://') || apartment.cover_image_path.startsWith('https://')" :src="apartment.cover_image_path" class="card-img-top h-100" alt="External Image">
     <!-- <img v-else :src="'http://127.0.0.1:8000/storage/' + apartment.cover_image_path" class="card-img-top h-100" alt="Uploaded Image">  -->
@@ -149,6 +152,15 @@ export default {
   position: relative;
   // overflow: hidden;
 }
+
+.image-card{
+width: 100%;
+  aspect-ratio: 1;
+}
+.image-card>img{
+  object-fit: cover;
+}
+
 // .text-responsive {
 //   font-size: 1.5vw; /* o puoi utilizzare 2vmin, o regola il valore in base alle tue esigenze */
 // }
