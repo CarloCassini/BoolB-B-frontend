@@ -1,6 +1,7 @@
 <script>
 // import MyComponent from "./components/MyComponent.vue";
 import { store } from "../../data/store";
+
 export default {
   data() {
     return {
@@ -13,9 +14,8 @@ export default {
     isDetail: Boolean,
   },
 
-  // components: {
-  //
-  // },
+  components: {
+  },
 
 };
 </script>
@@ -82,55 +82,65 @@ export default {
         services:      
       </div>
       <div class="d-flex flex-wrap">
-          <span  v-for="(service,index) in apartment.services" class="badge me-2 my-2 bg-gradient bg-dark">
-            <abbr :title="service.label" class="initialism">
-              <font-awesome-icon :icon="service.symbol" style="color: #ff7977;" />
-            </abbr>
-          </span>
+        <span  v-for="(service,index) in apartment.services" class="badge me-2 my-2 bg-gradient bg-dark">
+          <abbr :title="service.label" class="initialism">
+            <font-awesome-icon :icon="service.symbol" style="color: #ff7977;" />
+          </abbr>
+        </span>
       </div>
     </div>
   </div>
 </div>
+
 </router-link>
 <!-- * card on detail -->
 
 <div v-else class="card mb-3 h-100 bg-light p-0 bg-gradient text-dark">
-  <div class="image-card">
-    <img v-if="!apartment.cover_image_path" src="https://via.placeholder.com/2000x1500.png/333333?text=Placeholder" class="card-img-top h-100" alt="Placeholder">
-    <img v-else-if="apartment.cover_image_path.startsWith('http://') || apartment.cover_image_path.startsWith('https://')" :src="apartment.cover_image_path" class="card-img-top h-100" alt="External Image">
-    <!-- <img v-else :src="'http://127.0.0.1:8000/storage/' + apartment.cover_image_path" class="card-img-top h-100" alt="Uploaded Image">  -->
-    <img v-else :src="store.storageUrl + apartment.cover_image_path" class="card-img-top h-100" alt="Uploaded Image"> 
-  </div>
-  <div class="card-body">
-    <h5 class="card-title title-responsive">{{apartment.title}}</h5>
-    <p class="card-text text-responsive">{{ apartment.description }}</p>
-    <div class="d-flex flex-column">
-      <div class="d-flex justify-content-between">
-        <span class="text-responsive"><strong class="me-1">Rooms:</strong>{{ apartment.rooms }}</span>
-        <span class="text-responsive"><strong class="me-1">Beds:</strong>{{ apartment.beds }}</span>
-
-      </div>
-      <div class="d-flex justify-content-between">
-        <span class="text-responsive"><strong class="me-1">Bathrooms:</strong>{{ apartment.bathrooms }}</span>
-        <span class="text-responsive"><strong class="me-1">Surface:</strong>{{ apartment.m2 }}&#13217</span>
-
-      </div>
+  <div class="d-flex ">
+    <div class="d-none d-md-block col-12 col-md-4 image-card-detail">
+      <img v-if="!apartment.cover_image_path" src="https://via.placeholder.com/2000x1500.png/333333?text=Placeholder" class="card-img-top h-100" alt="Placeholder">
+      <img v-else-if="apartment.cover_image_path.startsWith('http://') || apartment.cover_image_path.startsWith('https://')" :src="apartment.cover_image_path" class="card-img-top h-100" alt="External Image">
+      <!-- <img v-else :src="'http://127.0.0.1:8000/storage/' + apartment.cover_image_path" class="card-img-top h-100" alt="Uploaded Image">  -->
+      <img v-else :src="store.storageUrl + apartment.cover_image_path" class="card-img-top h-100" alt="Uploaded Image"> 
     </div>
-    <span  class="badge text-responsive" style="background-color: #ff7977;">{{apartment.beds}} <font-awesome-icon icon="fa-solid fa-bed" /></span> <br>
-    <strong class="text-responsive" >Servizi:</strong>
-    <div class="d-flex flex-wrap title-responsive">
-     
+    <div class="col-12 col-md-8 card-body d-flex flex-column">
+      <h5 class="card-title title-responsive">{{apartment.title}}</h5>
+      <div class=" apartment-description mt-3">
+        <strong class="me-1">description:</strong>
+        <p class="card-text text-responsive">{{ apartment.description }}</p>
+      </div>
+      <div class="d-flex flex-column mt-3">
+        <div class="d-flex justify-content-between">
+          <span class="text-responsive"><strong class="me-1">Rooms:</strong>{{ apartment.rooms }}</span>
+          <span class="text-responsive"><strong class="me-1">Beds:</strong>{{ apartment.beds }}</span>
 
-        <span  v-for="(service,index) in apartment.services" class="badge me-2 my-2 bg-gradient bg-dark"><!-- {{ service.label }} --> <font-awesome-icon :icon="service.symbol" style="color: #ff7977;" /></span>
+        </div>
+        <div class="d-flex justify-content-between">
+          <span class="text-responsive"><strong class="me-1">Bathrooms:</strong>{{ apartment.bathrooms }}</span>
+          <span class="text-responsive"><strong class="me-1">Surface:</strong>{{ apartment.m2 }}&#13217</span>
+
+        </div>
+      </div>
+      <div class="mt-3">
+        <strong class="me-1">address:</strong>
+        <p class="card-text"><small class="text-responsive">{{apartment.address}}</small></p>
+      </div>
+      <div class="mt-auto">
+        <strong class="text-responsive" >services:</strong>
+        <div class="d-flex flex-wrap title-responsive">
+      </div>
       
-    </div>
-    <p class="card-text"><small class="text-responsive">{{apartment.address}}</small></p>
-    <div class="card-footer text-responsive" v-if="!isDetail">
-      <router-link :to="{ name: 'detail', params:{id: apartment.id},  }" class="btn btn-secondary text-responsive" >
-      Vedi dettaglio
-    </router-link>
-    </div>
 
+          <span  v-for="(service,index) in apartment.services" class="badge me-2 my-2 bg-gradient bg-dark"><!-- {{ service.label }} --> <font-awesome-icon :icon="service.symbol" style="color: #ff7977;" /></span>
+        
+      </div>
+
+      <div class="card-footer text-responsive" v-if="!isDetail">
+        <router-link :to="{ name: 'detail', params:{id: apartment.id},  }" class="btn btn-secondary text-responsive" >
+        Vedi dettaglio
+      </router-link>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -170,6 +180,17 @@ width: 100%;
 }
 .image-card>img{
   object-fit: cover;
+}
+.image-card-detail{
+width: 40%;
+  aspect-ratio: 1;
+}
+.image-card-detail>img{
+  object-fit: cover;
+}
+.apartment-description{
+  max-height: 30vh;
+  overflow: auto;
 }
 
 // .text-responsive {
