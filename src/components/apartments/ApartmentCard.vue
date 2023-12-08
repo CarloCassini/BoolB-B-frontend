@@ -19,34 +19,10 @@ export default {
 
 };
 </script>
-
+<!-- * card on grid -->
 <template>
-
 <router-link v-if="!isDetail" :to="{ name: 'detail', params:{id: apartment.id}, }" class="text-decoration-none active-sense">
-<!-- <div class="card text-bg-light mb-3 ">
-  <div class="row g-0">
-    <div class="col-md-2">
-      <img src="{{apartment.cover_image_path}}" class="img-fluid rounded-start" alt="...">
-    </div>
-    <div class="col-md-4">
-      <div class="card-body">
-        <h5 class="card-title">{{apartment.title}}</h5>
-        <p class="card-text">{{ apartment.description }}</p>
-        <p class="card-text"><small class="text-body-secondary"></small></p>
-      </div>
-    </div>
-    <div class="col-md-2">
-      <div class="d-flex flex-column">
-        <span><strong class="me-1">Stanze:</strong>{{ apartment.rooms }}&#13217</span>
-        <span><strong class="me-1">bagni:</strong>{{ apartment.bathrooms }}&#13217</span>
-        <span><strong class="me-1">Grandezza:</strong>{{ apartment.m2 }}&#13217</span>
-      </div>
-    </div>
-    <div class="col-md-2">
-      servizi font awesome
-    </div>
-  </div>
-</div> -->
+
 <div class="card mb-3 h-100 bg-light p-0 bg-gradient text-dark overflow-hidden ">
   <div class="container-overlay text-white ">
     <div class="overlayed h-100 w-100 d-flex flex-column justify-content-between">
@@ -70,12 +46,15 @@ export default {
         
       </div>
       <!--* apartment Data --------------------------------------------------------------------->
-      <div class="d-flex">
-        
-        <span  class="badge bg-gradient bg-dark me-1"><font-awesome-icon icon="fa-solid fa-bed" /> <span style="color: #ff7977;">{{apartment.beds}}</span></span> <br>
-        <span  class="badge bg-gradient bg-dark me-1"><font-awesome-icon icon="fa-solid fa-door-open" /> <span style="color: #ff7977;">{{apartment.rooms}}</span></span> <br>
-        <span  class="badge bg-gradient bg-dark me-1"><font-awesome-icon icon="fa-solid fa-toilet" /> <span style="color: #ff7977;">{{apartment.bathrooms}}</span></span> <br>
-        <span  class="badge bg-gradient bg-dark me-1"><font-awesome-icon icon="fa-solid fa-maximize" /> <span style="color: #ff7977;">{{apartment.m2}}</span> &#13217</span> <br>
+      <div class="d-flex justify-content-between">
+        <div>
+          <span  class="badge bg-gradient bg-dark me-1"><font-awesome-icon icon="fa-solid fa-bed" /> <span style="color: #ff7977;">{{apartment.beds}}</span></span> <br>
+          <span  class="badge bg-gradient bg-dark me-1"><font-awesome-icon icon="fa-solid fa-door-open" /> <span style="color: #ff7977;">{{apartment.rooms}}</span></span> <br>
+        </div>
+        <div>
+          <span  class="badge bg-gradient bg-dark me-1"><font-awesome-icon icon="fa-solid fa-toilet" /> <span style="color: #ff7977;">{{apartment.bathrooms}}</span></span> <br>
+          <span  class="badge bg-gradient bg-dark me-1"><font-awesome-icon icon="fa-solid fa-maximize" /> <span style="color: #ff7977;">{{apartment.m2}}</span> &#13217</span> <br>
+        </div>
         
       </div>
     </div>
@@ -99,6 +78,7 @@ export default {
   </div>
 </div>
 </router-link>
+<!-- * card on detail -->
 
 <div v-else class="card mb-3 h-100 bg-light p-0 bg-gradient text-dark">
   <div>
@@ -145,6 +125,8 @@ export default {
 <style lang="scss" scoped>
 .heading-size{
   font-size: 1.1rem;
+  max-height: 1rem;
+  overflow: hidden;
 }
 .normal-txt-size{
   font-size:rem;
@@ -152,14 +134,14 @@ export default {
 .overlayed{
   position: absolute;
   background: linear-gradient(#000000, #00000000);
-  opacity: 0;
+  opacity: .5;
 }
 .overlayed:hover{
-  opacity: 100;
+  opacity: .8;
 }
 .active-sense:focus{
   .overlayed{
-    opacity: 100;
+    opacity: .8;
   }
 
 }

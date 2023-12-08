@@ -6,11 +6,13 @@ import HeroImgUi from "../components/partials/ui/HeroImgUi.vue";
 
 import { store } from "../data/store";
 import FiltersBoxUi from "../components/partials/ui/FiltersBoxUi.vue";
+import HeadingTxtUi from "../components/partials/ui/HeadingTxtUi.vue";
 
 export default {
   data() {
     return {
       title: "Boolbnb",
+      subTitle:"Welcome to",
       apartments: [],
     };
   },
@@ -18,7 +20,8 @@ export default {
     ApartmentsList,
     HeroImgUi,
     FiltersBoxUi,
-  },
+    HeadingTxtUi
+},
   methods: {
     fetchApartments(apiUri = store.apiUrl + "/sponsored") {
       console.log("call");
@@ -38,11 +41,13 @@ export default {
 <template>
   <div class="scroll-main">
     <!-- <HeroImgUi /> -->
-    <div class="text-center my-5">
+    
+    <!-- <div class="text-center my-5">
       <h2 class="display-6" style="color: #ffffff">Welcome to</h2>
       <h1 class="display-3" style="color: #ff7977">{{ title }}</h1>
-    </div>
+    </div> -->
     <div class="container">
+      <HeadingTxtUi :subtitle="this.subTitle" :title="this.title" />
       <div class="search-container my-5">
         <FiltersBoxUi />
       </div>

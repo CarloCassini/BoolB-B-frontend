@@ -221,7 +221,7 @@ export default {
 
             <div class="d-flex flex-column suggestions-container align-items-center w-50">
                 <span>Where</span>
-                <input @change="handleQuery()" type="text" class="input-styler big-input w-100" id="where">
+                <input @change="handleQuery()" type="text" class="input-styler big-input w-100 my-3" id="where">
                 <ul class="suggestions p-0 d-none" id="sg-list">
                   <li v-for="(suggestion, index) in this.searchResults" :key="index" @click="fillFromSuggestion($event)">
                     {{suggestion.address.freeformAddress}}
@@ -230,23 +230,23 @@ export default {
             </div>
             <div class="d-flex flex-column align-items-center"  v-if="isSearchRoute">
                 <span>Rooms</span>
-                <input @change="handleInputs()" type="number" id="rooms" class="small-input text-dark input-styler">
+                <input @change="handleInputs()" type="number" id="rooms" class="small-input text-dark  my-3 input-styler">
             </div>
             <div class="d-flex flex-column align-items-center"  v-if="isSearchRoute">
                 <span>Beds</span>
-                <input @change="handleInputs()" type="number" id="beds" class="small-input text-dark input-styler">
+                <input @change="handleInputs()" type="number" id="beds" class="small-input text-dark  my-3 input-styler">
             </div>
             <div class="d-flex flex-column align-items-center"  v-if="isSearchRoute">
                 <span>Distance</span>
-                <input @change="handleInputs()" type="range"  id="distance"  class="range-styler mx-3" min="0" max="300">
+                <input @change="handleInputs()" type="range"  id="distance"  class="range-styler mx-3 my-3" min="0" max="300">
             </div>
             <div class="d-flex flex-column align-items-center"  v-if="isSearchRoute">
                 <span>Services</span>
-                <button class="btn-style" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                <button class="btn-style my-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                    +
                </button>
             </div>
-            <router-link @click="getApartments()" :to="{ name: 'search', params: { rooms: tempRooms,  beds: tempBeds, distance: tempDistance, activeServices: tempActiveServices.join('-') } }" class="mx-3 p-3 btn-style text-decoration-none">
+            <router-link @click="getApartments()" :to="{ name: 'search', params: { rooms: tempRooms,  beds: tempBeds, distance: tempDistance, activeServices: tempActiveServices.join('-') } }" class="mx-3 p-3 my-3 btn-style text-decoration-none">
                 Cerca!
             </router-link>
             <!-- TODO OTHER VERSION, MAY CAUSE ERROS -->
