@@ -31,22 +31,15 @@ export default {
       <h5 class="card-title heading-size m-2">{{apartment.title}}</h5>
 
       <!--* apartment Services ----------------------------------------------------------------->
-      <div class="d-flex flex-wrap">
-       
-        
+      <!-- <div class="d-flex flex-wrap">      
           <span  v-for="(service,index) in apartment.services" class="badge me-2 my-2 bg-gradient bg-dark">
-
             <abbr :title="service.label" class="initialism">
-
               <font-awesome-icon :icon="service.symbol" style="color: #ff7977;" />
-            
             </abbr>
-
           </span>
-        
-      </div>
+      </div> -->
       <!--* apartment Data --------------------------------------------------------------------->
-      <div class="d-flex justify-content-between">
+      <!-- <div class="d-flex justify-content-between">
         <div>
           <span  class="badge bg-gradient bg-dark me-1"><font-awesome-icon icon="fa-solid fa-bed" /> <span style="color: #ff7977;">{{apartment.beds}}</span></span> <br>
           <span  class="badge bg-gradient bg-dark me-1"><font-awesome-icon icon="fa-solid fa-door-open" /> <span style="color: #ff7977;">{{apartment.rooms}}</span></span> <br>
@@ -56,7 +49,7 @@ export default {
           <span  class="badge bg-gradient bg-dark me-1"><font-awesome-icon icon="fa-solid fa-maximize" /> <span style="color: #ff7977;">{{apartment.m2}}</span> &#13217</span> <br>
         </div>
         
-      </div>
+      </div> -->
     </div>
     <!--* apartment Cover ---------------------------------------------------------------------->
     <div class="image-card">
@@ -67,17 +60,35 @@ export default {
     </div>
   </div>
 
-  <div class="card-body p-0">
-
-    <p class="normal-txt-size m-0 px-1"><small>{{apartment.address}}</small></p>
-    <!-- <p class="card-text normal-txt-size">{{ apartment.description }}</p> -->
-    <!-- <div class="d-flex flex-column normal-txt-size">
-      <span><strong class="me-1">Rooms:</strong>{{ apartment.rooms }}</span>
-      <span><strong class="me-1">Beds:</strong>{{ apartment.beds }}</span>
-      <span><strong class="me-1">Bathrooms:</strong>{{ apartment.bathrooms }}</span>
-      <span><strong class="me-1">Surface:</strong>{{ apartment.m2 }}&#13217</span>
-    </div> -->
-
+  <div class="card-body d-flex flex-column p-0 mx-2">
+    <!-- feature -->
+    <div class="d-flex justify-content-between my-2 ">
+        <div>
+          <span  class="badge bg-gradient bg-dark me-1"><font-awesome-icon icon="fa-solid fa-bed" /> <span style="color: #ff7977;">{{apartment.beds}}</span></span>
+          <span  class="badge bg-gradient bg-dark me-1"><font-awesome-icon icon="fa-solid fa-door-open" /> <span style="color: #ff7977;">{{apartment.rooms}}</span></span>
+        </div>
+        <div>
+          <span  class="badge bg-gradient bg-dark me-1"><font-awesome-icon icon="fa-solid fa-toilet" /> <span style="color: #ff7977;">{{apartment.bathrooms}}</span></span> 
+          <span  class="badge bg-gradient bg-dark me-1"><font-awesome-icon icon="fa-solid fa-maximize" /> <span style="color: #ff7977;">{{apartment.m2}}</span> &#13217 </span> 
+        </div>
+    </div>
+    <!-- indirizzo -->
+    <div >
+      <p class="normal-txt-size m-0 px-1"><small>{{apartment.address}}</small></p>
+    </div>
+    <!-- servizi -->
+    <div class="mt-auto">
+      <div>
+        services:      
+      </div>
+      <div class="d-flex flex-wrap">
+          <span  v-for="(service,index) in apartment.services" class="badge me-2 my-2 bg-gradient bg-dark">
+            <abbr :title="service.label" class="initialism">
+              <font-awesome-icon :icon="service.symbol" style="color: #ff7977;" />
+            </abbr>
+          </span>
+      </div>
+    </div>
   </div>
 </div>
 </router-link>
