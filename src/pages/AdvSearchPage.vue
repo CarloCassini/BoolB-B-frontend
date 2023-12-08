@@ -92,22 +92,22 @@ export default {
 </script>
 
 <template>
+  <div class="scroll-main">
   <div class="container">
-    <HeadingTxtUi :subtitle="this.subTitle" :title="this.title" />
-    
-    <div class="my-5 search-container">
-      <FilterBoxUi />
 
-    </div>
-    <div class="row">
-      <div class="col-md-6">
-        <div class="cards-container">
-          
-          <ApartmentsList :key="fetch" :colNumSm="12" :colNumMd="6" :colNumLg="4" :apartments="store.filteredApartments" />
-
-        </div>
+      <HeadingTxtUi :subtitle="this.subTitle" :title="this.title" />
+      
+      <div class="my-5 search-container">
+        <FilterBoxUi />
+  
       </div>
-      <div class="col-md-6">mappa</div>
+      <div class="row">
+        <div class="col-md-6">
+            
+            <ApartmentsList :key="fetch" :colNumSm="12" :colNumMd="6" :colNumLg="4" :apartments="store.filteredApartments" />
+        </div>
+        <div class="col-md-6">mappa</div>
+      </div>
     </div>
   </div>
 </template>
@@ -121,9 +121,9 @@ export default {
   top: 60px;
   z-index: 2;
 }
-.cards-container{
+.scroll-main {
+  height: calc(100vh - 56px);
   overflow-y: scroll;
-  overflow-x: hidden;
-  // height: 80vh;
 }
+
 </style>
