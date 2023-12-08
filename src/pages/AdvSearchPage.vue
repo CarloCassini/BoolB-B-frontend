@@ -18,11 +18,12 @@ export default {
     };
   },
   components: {
-    ApartmentsList,FilterBoxUi,HeadingTxtUi
+    ApartmentsList,
+    FilterBoxUi,
+    HeadingTxtUi,
   },
   methods: {
-
-/*     fetchApartments() {
+    /*     fetchApartments() {
       const activeServices = [];
       let distance = 20;
       let beds = 1;
@@ -93,18 +94,21 @@ export default {
 
 <template>
   <div class="scroll-main">
-  <div class="container">
-
+    <div class="container">
       <HeadingTxtUi :subtitle="this.subTitle" :title="this.title" />
-      
+
       <div class="my-5 search-container">
         <FilterBoxUi />
-  
       </div>
       <div class="row">
         <div class="col-md-6">
-            
-            <ApartmentsList :key="fetch" :colNumSm="12" :colNumMd="6" :colNumLg="4" :apartments="store.filteredApartments" />
+          <ApartmentsList
+            :key="fetch"
+            :colNumSm="12"
+            :colNumMd="6"
+            :colNumLg="4"
+            :apartments="store.filteredApartments"
+          />
         </div>
         <div class="col-md-6">mappa</div>
       </div>
@@ -116,7 +120,7 @@ export default {
 .disabled {
   filter: grayscale(1);
 }
-.search-container{
+.search-container {
   position: sticky;
   top: 60px;
   z-index: 2;
@@ -125,5 +129,4 @@ export default {
   height: calc(100vh - 56px);
   overflow-y: scroll;
 }
-
 </style>
