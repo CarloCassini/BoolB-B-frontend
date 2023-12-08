@@ -11,37 +11,34 @@ export default {
       store,
     };
   },
+
+  props: {
+    latitude: String,
+    longitude: String,
+  },
+
   methods: {
     fetchMap() {
       //chiamata appartamento singolo per latitudine e longitudine (TomTom)
-      axios
-        .get(this.store.apiUrl + "/apartments/" + this.$route.params.id)
-        .then((response) => {
-          this.apartment = response.data.results;
-          console.log(this.apartment.latitude);
-          console.log(this.apartment.longitude);
+      if (this.latitude && this.longitude) {
+        const latitude = parseFloat(this.latitude);
+        const longitude = parseFloat(this.longitude);
 
-          if (this.apartment.latitude && this.apartment.longitude) {
-            const latitude = parseFloat(this.apartment.latitude);
-            const longitude = parseFloat(this.apartment.longitude);
+        this.map = tt.map({
+          key: "t7a52T1QnfuvZp7X85QvVlLccZeC5a9P",
+          container: "map",
+          center: [longitude, latitude],
+          zoom: 16,
+        });
 
-            this.map = tt.map({
-              key: "t7a52T1QnfuvZp7X85QvVlLccZeC5a9P",
-              container: "map",
-              center: [longitude, latitude],
-              zoom: 16,
-            });
-
-            this.map.on("load", () => {
-              let center = [longitude, latitude];
-              let marker = new tt.Marker().setLngLat(center).addTo(this.map);
-              console.log(center);
-            });
-          } else {
-            console.error("I dati dell'appartamento non sono validi!");
-          }
-        })
-        .catch((error) => console.error(error));
+        this.map.on("load", () => {
+          let center = [longitude, latitude];
+          let marker = new tt.Marker().setLngLat(center).addTo(this.map);
+          console.log(center);
+        });
+      } else {
+        console.error("I dati dell'appartamento non sono validi!");
+      }
     },
   },
 
