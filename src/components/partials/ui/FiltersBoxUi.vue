@@ -184,9 +184,17 @@ export default {
     },
     addToSponsorized() {
       store.sponsorized = [];
+      store.sponsorized_test = [];
       store.filteredApartmentsSponsor.forEach((element) => {
-        store.sponsorized.push(element["id"]);
+        store.sponsorized_test.push(element["id"]);
       });
+      store.filteredApartmentsAll.forEach((element) => {
+        if (!store.sponsorized_test.includes(element["id"])) {
+          store.sponsorized.push(element);
+        }
+      });
+      // valorizzo questo array solo con i valori degli appartamenti trovati escludendo quelli con sponsor
+      store.filteredApartmentsAll = store.sponsorized;
     },
     fillFromSuggestion(event) {
       let whereEl = document.getElementById("where");

@@ -39,17 +39,13 @@ export default {
       </div>
 
       <div
+        v-for="(apartment, index) in apartments_all"
         :class="
           'col-lg-' + colNumLg + ' col-md-' + colNumMd + ' col-sm-' + colNumSm
         "
-        v-for="(apartment, index) in apartments_all"
         key="index"
       >
-        <ApartmentCard
-          v-if="!sponsorized.includes(apartment['id'])"
-          :apartment="apartment"
-          :isDetail="false"
-        />
+        <ApartmentCard :apartment="apartment" :isDetail="false" />
       </div>
     </div>
   </div>
