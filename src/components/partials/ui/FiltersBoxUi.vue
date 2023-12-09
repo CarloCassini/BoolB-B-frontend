@@ -140,9 +140,13 @@ export default {
       console.log(beds, "beds");
       let distance = this.tempDistance;
       console.log(distance, "distance");
-      const activeServices = this.$route.params.activeServices
-        ? this.$route.params.activeServices.split("-")
-        : this.tempActiveServices;
+      // const activeServices = this.$route.params.activeServices
+      //   ? this.$route.params.activeServices.split("-")
+      //   : this.tempActiveServices;
+      const activeServices = this.tempActiveServices
+        ? this.tempActiveServices
+        : "";
+      // const activeServices = this.tempActiveServices.split(",");
       console.log(activeServices, "services");
 
       axios
