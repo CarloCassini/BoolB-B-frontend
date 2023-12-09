@@ -236,7 +236,7 @@ export default {
 
 <template>
   <div class="container">
-    <h1 class="m-3">Dettagli appartamento {{ this.$route.params.id }}</h1>
+    <h1 class="m-3 debug">Dettagli appartamento {{ this.$route.params.id }}</h1>
     <ApartmentCard :apartment="apartment" :isDetail="true" v-if="apartment" />
     <ContactButton v-if="apartment" :apartment_id="this.apartment.id" />
     <div id="map" class="map">

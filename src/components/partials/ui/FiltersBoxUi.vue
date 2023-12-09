@@ -164,7 +164,13 @@ export default {
           }
         )
         .then((response) => {
-          store.filteredApartments = response.data.data;
+          console.log("apartment sponsor: ");
+          console.log(response.data.results.sponsored.data);
+          console.log("apartment all: ");
+          console.log(response.data.results.all.data);
+          store.filteredApartmentsSponsor =
+            response.data.results.sponsored.data;
+          store.filteredApartmentsAll = response.data.results.all.data;
           console.log(store.filteredApartments);
           this.pagination.prev = response.data.prev_page_url;
           this.pagination.next = response.data.next_page_url;

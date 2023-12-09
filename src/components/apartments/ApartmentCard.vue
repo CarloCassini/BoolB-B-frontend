@@ -129,16 +129,7 @@ export default {
         <strong class="text-responsive" >services:</strong>
         <div class="d-flex flex-wrap title-responsive">
       </div>
-      
-
           <span  v-for="(service,index) in apartment.services" class="badge me-2 my-2 bg-gradient bg-dark"><!-- {{ service.label }} --> <font-awesome-icon :icon="service.symbol" style="color: #ff7977;" /></span>
-        
-      </div>
-
-      <div class="card-footer text-responsive" v-if="!isDetail">
-        <router-link :to="{ name: 'detail', params:{id: apartment.id},  }" class="btn btn-secondary text-responsive" >
-        Vedi dettaglio
-      </router-link>
       </div>
     </div>
   </div>
