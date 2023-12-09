@@ -5,21 +5,10 @@ import axios from "axios";
 
 export default {
   data() {
-    return {
-      sponsorized: [],
-    };
-  },
-  mounted() {
-    this.addToSponsorized();
+    return {};
   },
 
-  methods: {
-    addToSponsorized() {
-      this.apartments.forEach((element) => {
-        this.sponsorized.push(element["id"]);
-      });
-    },
-  },
+  methods: {},
 
   components: {
     ApartmentCard,
@@ -27,6 +16,7 @@ export default {
   props: {
     apartments: Object,
     apartments_all: Object,
+    sponsorized: Array,
     colNumSm: Number,
     colNumMd: Number,
     colNumLg: Number,

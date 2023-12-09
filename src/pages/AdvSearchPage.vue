@@ -111,6 +111,7 @@ export default {
             :colNumLg="4"
             :apartments="store.filteredApartmentsSponsor"
             :apartments_all="store.filteredApartmentsAll"
+            :sponsorized="store.sponsorized"
           />
         </div>
       </div>

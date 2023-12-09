@@ -172,10 +172,17 @@ export default {
             response.data.results.sponsored.data;
           store.filteredApartmentsAll = response.data.results.all.data;
           console.log(store.filteredApartments);
+          this.addToSponsorized();
           this.pagination.prev = response.data.prev_page_url;
           this.pagination.next = response.data.next_page_url;
           this.pagination.links = response.data.links;
         });
+    },
+    addToSponsorized() {
+      store.sponsorized = [];
+      store.filteredApartmentsSponsor.forEach((element) => {
+        store.sponsorized.push(element["id"]);
+      });
     },
     fillFromSuggestion(event) {
       let whereEl = document.getElementById("where");
