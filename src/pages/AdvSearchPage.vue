@@ -52,13 +52,7 @@ export default {
     Map,
   },
   methods: {
-    ciccio() {
-      console.log("ddddddddddddddddddd");
-    },
-    cercaZone() {
-      console.log("cicico: " + "xxxxxxxxxxxxxxxxx");
-      console.log("cicico: " + store.filteredApartmentsAll[0]);
-    },
+    cercaZone() {},
     fetchServices() {
       axios.get(store.apiUrl + "/services").then((response) => {
         this.services = response.data.map((service) => {
@@ -111,14 +105,9 @@ export default {
             :apartments="store.filteredApartmentsSponsor"
             :apartments_all="store.filteredApartmentsAll"
             :sponsorized="store.sponsorized"
+            :isSearch="false"
           />
         </div>
-        <!-- <div class="col-md-6">
-          <h3>Mappa appartamenti</h3>
-          <div id="map" class="map">
-            <Map :latitude="arrLat" :longitude="arrLong"></Map>
-          </div>
-        </div> -->
       </div>
     </div>
   </div>

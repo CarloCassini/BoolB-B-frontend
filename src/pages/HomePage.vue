@@ -47,9 +47,7 @@ export default {
       <h1 class="display-3" style="color: #ff7977">{{ title }}</h1>
     </div> -->
     <div class="container">
-      <div class="my-1">
-        <HeadingTxtUi :subtitle="this.subTitle" :title="this.title" />
-      </div>
+      <HeadingTxtUi :subtitle="this.subTitle" :title="this.title" />
       <div class="search-container my-5">
         <FiltersBoxUi />
       </div>
