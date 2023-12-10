@@ -4,7 +4,6 @@ import axios from "axios";
 import ApartmentsList from "../components/apartments/apartmentslist.vue";
 import FilterBoxUi from "../components/partials/ui/FiltersBoxUi.vue";
 import HeadingTxtUi from "../components/partials/ui/HeadingTxtUi.vue";
-import SearchMap from "../components/partials/ui/SearchMap.vue";
 import { store } from "../data/store";
 
 import Map from "../components/partials/ui/Map.vue";
@@ -50,7 +49,6 @@ export default {
     ApartmentsList,
     FilterBoxUi,
     HeadingTxtUi,
-    SearchMap,
     Map,
   },
   methods: {
