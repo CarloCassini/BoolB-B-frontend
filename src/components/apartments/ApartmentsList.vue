@@ -27,7 +27,7 @@ export default {
 <template>
   <!-- <div :class="'row row-cols-' +colNum+  'row-cols-lg-' + colNumLg+ 'g-2 g-lg-3'"> -->
   <div class="mb-5">
-    <div class="row g-2 g-lg-3">
+    <div class="row g-2 g-lg-3 display-back scroll-display">
       <div
         :class="
           'col-lg-' + colNumLg + ' col-md-' + colNumMd + ' col-sm-' + colNumSm

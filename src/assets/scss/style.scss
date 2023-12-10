@@ -28,3 +28,37 @@ body {
   border-radius: 0.5rem;
   padding: 1rem;
 }
+
+/* WebKit (Chrome, Safari) */
+::-webkit-scrollbar {
+  width: 4px; /* Larghezza della barra di scorrimento orizzontale e verticale */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #ff7977; /* Colore della maniglia della barra di scorrimento */
+  border-radius: 3px; /* Raggio degli angoli della maniglia della barra di scorrimento */
+}
+
+/* Firefox */
+::-moz-scrollbar {
+  width: 4px;
+}
+
+::-moz-scrollbar-thumb {
+  background-color: #ff7977;
+  border-radius: 3px;
+}
+
+/* Edge (basato su Windows) */
+::-ms-scrollbar {
+  width: 4px;
+}
+
+::-ms-scrollbar-thumb {
+  background-color: #ff7977;
+  border-radius: 3px;
+}
+.scroll-display {
+  overflow: auto;
+  height: 50vh;
+}
