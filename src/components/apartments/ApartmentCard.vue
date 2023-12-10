@@ -62,14 +62,12 @@ export default {
 
   <div class="card-body d-flex flex-column p-0 mx-2">
     <!-- feature -->
-    <div class="d-flex justify-content-between my-2 ">
-        <div>
-          <span  class="badge bg-gradient bg-dark me-1"><font-awesome-icon icon="fa-solid fa-bed" /> <span style="color: #ff7977;">{{apartment.beds}}</span></span>
-          <span  class="badge bg-gradient bg-dark me-1"><font-awesome-icon icon="fa-solid fa-door-open" /> <span style="color: #ff7977;">{{apartment.rooms}}</span></span>
-        </div>
-        <div>
-          <span  class="badge bg-gradient bg-dark me-1"><font-awesome-icon icon="fa-solid fa-toilet" /> <span style="color: #ff7977;">{{apartment.bathrooms}}</span></span> 
-          <span  class="badge bg-gradient bg-dark me-1"><font-awesome-icon icon="fa-solid fa-maximize" /> <span style="color: #ff7977;">{{apartment.m2}}</span> &#13217 </span> 
+    <div class=" my-2 ">
+        <div class="d-flex flex-wrap  justify-content-between">
+          <span  class="badge bg-gradient badge-style col-3 p-1 "><font-awesome-icon icon="fa-solid fa-bed" /> <span >{{apartment.beds}}</span></span>
+          <span  class="badge bg-gradient badge-style col-3 p-1"><font-awesome-icon icon="fa-solid fa-door-open" /> <span>{{apartment.rooms}}</span></span>
+          <span  class="badge bg-gradient badge-style col-3 p-1"><font-awesome-icon icon="fa-solid fa-toilet" /> <span >{{apartment.bathrooms}}</span></span> 
+          <span  class="badge bg-gradient badge-style col-3 p-1"><font-awesome-icon icon="fa-solid fa-maximize" /> <span >{{apartment.m2}}</span> &#13217 </span> 
         </div>
     </div>
     <!-- indirizzo -->
@@ -81,10 +79,10 @@ export default {
       <div>
         services:      
       </div>
-      <div class="d-flex flex-wrap">
-        <span  v-for="(service,index) in apartment.services" class="badge me-2 my-2 bg-gradient bg-dark">
+      <div class="d-flex flex-wrap justify-content-start">
+        <span  v-for="(service,index) in apartment.services" class="badge me-2 my-2 badge-style col-2">
           <abbr :title="service.label" class="initialism">
-            <font-awesome-icon :icon="service.symbol" style="color: #ff7977;" />
+            <font-awesome-icon :icon="service.symbol" />
           </abbr>
         </span>
       </div>
@@ -129,16 +127,7 @@ export default {
         <strong class="text-responsive" >services:</strong>
         <div class="d-flex flex-wrap title-responsive">
       </div>
-      
-
-          <span  v-for="(service,index) in apartment.services" class="badge me-2 my-2 bg-gradient bg-dark"><!-- {{ service.label }} --> <font-awesome-icon :icon="service.symbol" style="color: #ff7977;" /></span>
-        
-      </div>
-
-      <div class="card-footer text-responsive" v-if="!isDetail">
-        <router-link :to="{ name: 'detail', params:{id: apartment.id},  }" class="btn btn-secondary text-responsive" >
-        Vedi dettaglio
-      </router-link>
+          <span  v-for="(service,index) in apartment.services" class="badge me-2 my-2 bg-gradient badge-style"><!-- {{ service.label }} --> <font-awesome-icon :icon="service.symbol" /></span>
       </div>
     </div>
   </div>
@@ -191,6 +180,13 @@ width: 40%;
 .apartment-description{
   max-height: 30vh;
   overflow: auto;
+}
+.badge-style{
+  background-color: #ff7977;
+  border-radius: 0.5rem;
+  border: 1px solid whitesmoke;
+  color: whitesmoke;
+  font-weight: 700;
 }
 
 // .text-responsive {

@@ -140,9 +140,13 @@ export default {
       console.log(beds, "beds");
       let distance = this.tempDistance;
       console.log(distance, "distance");
-      const activeServices = this.$route.params.activeServices
-        ? this.$route.params.activeServices.split("-")
-        : this.tempActiveServices;
+      // const activeServices = this.$route.params.activeServices
+      //   ? this.$route.params.activeServices.split("-")
+      //   : this.tempActiveServices;
+      const activeServices = this.tempActiveServices
+        ? this.tempActiveServices
+        : "";
+      // const activeServices = this.tempActiveServices.split(",");
       console.log(activeServices, "services");
 
       axios
@@ -164,12 +168,33 @@ export default {
           }
         )
         .then((response) => {
-          store.filteredApartments = response.data.data;
+          console.log("apartment sponsor: ");
+          console.log(response.data.results.sponsored.data);
+          console.log("apartment all: ");
+          console.log(response.data.results.all.data);
+          store.filteredApartmentsSponsor =
+            response.data.results.sponsored.data;
+          store.filteredApartmentsAll = response.data.results.all.data;
           console.log(store.filteredApartments);
+          this.addToSponsorized();
           this.pagination.prev = response.data.prev_page_url;
           this.pagination.next = response.data.next_page_url;
           this.pagination.links = response.data.links;
         });
+    },
+    addToSponsorized() {
+      store.sponsorized = [];
+      store.sponsorized_test = [];
+      store.filteredApartmentsSponsor.forEach((element) => {
+        store.sponsorized_test.push(element["id"]);
+      });
+      store.filteredApartmentsAll.forEach((element) => {
+        if (!store.sponsorized_test.includes(element["id"])) {
+          store.sponsorized.push(element);
+        }
+      });
+      // valorizzo questo array solo con i valori degli appartamenti trovati escludendo quelli con sponsor
+      store.filteredApartmentsAll = store.sponsorized;
     },
     fillFromSuggestion(event) {
       let whereEl = document.getElementById("where");

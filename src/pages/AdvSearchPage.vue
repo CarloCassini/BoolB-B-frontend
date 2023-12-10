@@ -109,7 +109,9 @@ export default {
             :colNumSm="12"
             :colNumMd="6"
             :colNumLg="4"
-            :apartments="store.filteredApartments"
+            :apartments="store.filteredApartmentsSponsor"
+            :apartments_all="store.filteredApartmentsAll"
+            :sponsorized="store.sponsorized"
           />
         </div>
         <div class="col-md-6">
