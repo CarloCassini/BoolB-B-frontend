@@ -235,7 +235,7 @@ export default {
 </script>
 
 <template>
-  <div class="container display-back">
+  <div class="container display-back mt-3">
     <ApartmentCard :apartment="apartment" :isDetail="true" v-if="apartment" />
     <ContactButton v-if="apartment" :apartment_id="this.apartment.id" />
     <div id="map" class="map">
