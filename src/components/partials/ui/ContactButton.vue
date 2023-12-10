@@ -89,7 +89,7 @@ export default {
 
 <template>
   <div
-    class="btn btn-primary d-flex justify-content-center my-2"
+    class="btn btn-style d-flex justify-content-center my-2"
     data-bs-toggle="modal"
     data-bs-target="#exampleModal"
     data-bs-whatever="@fat"
