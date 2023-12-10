@@ -4,7 +4,7 @@ import axios from "axios";
 import ApartmentsList from "../components/apartments/ApartmentsList.vue";
 import FilterBoxUi from "../components/partials/ui/FiltersBoxUi.vue";
 import HeadingTxtUi from "../components/partials/ui/HeadingTxtUi.vue";
-import Map from "../components/partials/ui/Map.vue";
+import SearchMap from "../components/partials/ui/SearchMap.vue";
 import { store } from "../data/store";
 
 export default {
@@ -22,7 +22,7 @@ export default {
     ApartmentsList,
     FilterBoxUi,
     HeadingTxtUi,
-    Map,
+    SearchMap,
   },
   methods: {
     /*     fetchApartments() {
@@ -111,6 +111,12 @@ export default {
             :colNumLg="4"
             :apartments="store.filteredApartments"
           />
+        </div>
+        <div class="col-md-6">
+          <h3>Mappa appartamenti</h3>
+          <div id="searchMap" class="searchMap">
+            <SearchMap :apartments="store.filteredApartments"></SearchMap>
+          </div>
         </div>
       </div>
     </div>
