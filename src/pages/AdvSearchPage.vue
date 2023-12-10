@@ -1,11 +1,13 @@
 <script>
 import axios from "axios";
 // import MyComponent from "./components/MyComponent.vue";
-import ApartmentsList from "../components/apartments/ApartmentsList.vue";
+import ApartmentsList from "../components/apartments/apartmentslist.vue";
 import FilterBoxUi from "../components/partials/ui/FiltersBoxUi.vue";
 import HeadingTxtUi from "../components/partials/ui/HeadingTxtUi.vue";
-import Map from "../components/partials/ui/Map.vue";
+import SearchMap from "../components/partials/ui/SearchMap.vue";
 import { store } from "../data/store";
+
+import Map from "../components/partials/ui/Map.vue";
 
 export default {
   data() {
@@ -18,10 +20,36 @@ export default {
       apartments: [],
     };
   },
+  computed: {
+    arrLat() {
+      let allLat = [];
+      store.filteredApartmentsAll.forEach((apartment) => {
+        allLat.push(apartment.latitude);
+      });
+      store.filteredApartmentsSponsor.forEach((apartment) => {
+        allLat.push(apartment.latitude);
+      });
+      store.arrLat = allLat;
+      return allLat;
+    },
+    arrLong() {
+      let allLong = [];
+      store.filteredApartmentsAll.forEach((apartment) => {
+        allLong.push(apartment.longitude);
+      });
+      store.filteredApartmentsSponsor.forEach((apartment) => {
+        allLong.push(apartment.longitude);
+      });
+      store.arrLong = allLong;
+      return allLong;
+    },
+  },
+
   components: {
     ApartmentsList,
     FilterBoxUi,
     HeadingTxtUi,
+    SearchMap,
     Map,
   },
   methods: {
@@ -95,6 +123,8 @@ export default {
 </script>
 
 <template>
+  <div class="debug">{{ arrLat }}</div>
+  <div class="debug">{{ arrLong }}</div>
   <div class="scroll-main">
     <div class="container">
       <HeadingTxtUi :subtitle="this.subTitle" :title="this.title" />
@@ -113,6 +143,12 @@ export default {
             :apartments_all="store.filteredApartmentsAll"
             :sponsorized="store.sponsorized"
           />
+        </div>
+        <div class="col-md-6" v-if="arrLat">
+          <h3>Mappa appartamenti</h3>
+          <!-- <div id="map" class="map">
+            <Map :latitude="arrLat" :longitude="arrLong"></Map>
+          </div> -->
         </div>
       </div>
     </div>
