@@ -56,8 +56,8 @@ export default {
       <div class="my-1">
         <ApartmentsList
           :colNumSm="12"
-          :colNumMd="6"
-          :colNumLg="3"
+          :colNumMd="4"
+          :colNumLg="2"
           :apartments="this.apartments"
         />
       </div>
