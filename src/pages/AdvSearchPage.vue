@@ -22,6 +22,7 @@ export default {
   },
   computed: {
     arrLat() {
+      // console.log("cicico: " + store.filteredApartmentsAll[0]);
       let allLat = [];
       store.filteredApartmentsAll.forEach((apartment) => {
         allLat.push(apartment.latitude);
@@ -53,42 +54,13 @@ export default {
     Map,
   },
   methods: {
-    /*     fetchApartments() {
-      const activeServices = [];
-      let distance = 20;
-      let beds = 1;
-      let rooms = 1;
-      const distanceEl = document.getElementById("distance");
-      const bedsEl = document.getElementById("beds");
-      const roomsEl = document.getElementById("rooms");
-      if (distanceEl.value) {
-        distance = distanceEl.value;
-      }
-      if (bedsEl.value) {
-        beds = bedsEl.value;
-      }
-      if (roomsEl.value) {
-        rooms = roomsEl.value;
-      }
-      this.services.forEach((service) => {
-        if (service.active) activeServices.push(service.id);
-      });
-      // console.log(activeServices,distance,beds,rooms);
-
-      axios
-        .post(
-          store.apiUrl + "/apartments-by-filters",
-          { activeServices, distance, beds, rooms },
-          {
-            headers: {
-              "contet-type": "multypart/form-data",
-            },
-          }
-        )
-        .then((response) => {
-          this.apartments = response.data.data;
-        });
-    }, */
+    ciccio() {
+      console.log("ddddddddddddddddddd");
+    },
+    cercaZone() {
+      console.log("cicico: " + "xxxxxxxxxxxxxxxxx");
+      console.log("cicico: " + store.filteredApartmentsAll[0]);
+    },
     fetchServices() {
       axios.get(store.apiUrl + "/services").then((response) => {
         this.services = response.data.map((service) => {
@@ -114,6 +86,7 @@ export default {
     },
   },
   created() {
+    this.cercaZone();
     this.fetchServices();
   },
   mounted() {
@@ -123,8 +96,6 @@ export default {
 </script>
 
 <template>
-  <div class="debug">{{ arrLat }}</div>
-  <div class="debug">{{ arrLong }}</div>
   <div class="scroll-main">
     <div class="container">
       <HeadingTxtUi :subtitle="this.subTitle" :title="this.title" />
@@ -133,23 +104,23 @@ export default {
         <FilterBoxUi />
       </div>
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-12">
           <ApartmentsList
             :key="fetch"
             :colNumSm="12"
-            :colNumMd="6"
-            :colNumLg="4"
+            :colNumMd="4"
+            :colNumLg="2"
             :apartments="store.filteredApartmentsSponsor"
             :apartments_all="store.filteredApartmentsAll"
             :sponsorized="store.sponsorized"
           />
         </div>
-        <div class="col-md-6" v-if="arrLat">
+        <!-- <div class="col-md-6">
           <h3>Mappa appartamenti</h3>
-          <!-- <div id="map" class="map">
+          <div id="map" class="map">
             <Map :latitude="arrLat" :longitude="arrLong"></Map>
-          </div> -->
-        </div>
+          </div>
+        </div> -->
       </div>
     </div>
   </div>
