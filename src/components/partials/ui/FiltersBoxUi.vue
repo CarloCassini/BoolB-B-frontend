@@ -329,7 +329,7 @@ export default {
           }"
           class="mx-3 p-3 my-3 btn-style text-decoration-none"
         >
-          Cerca!
+          Search!
         </router-link>
         <!-- TODO OTHER VERSION, MAY CAUSE ERROS -->
         <!--        <router-link @click="getApartments()" v-else :to="{ name: 'search', params: { activeServices: tempActiveServices.join('-'), distance: tempDistance, beds: tempBeds, rooms: tempRooms } }" class="mx-3 p-3 btn-style text-decoration-none">
