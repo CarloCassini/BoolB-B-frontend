@@ -9,31 +9,31 @@ export default {
     return {
       apartments: [],
       map: null,
+      store,
     };
   },
 
   props: {
-    apartments: Array,
+    arrLat: Array,
+    arrLong: Array,
   },
 
   methods: {
     fetchSearchMap() {
-      if (this.apartments.length > 0) {
-        this.map = tt.map({
-          key: "t7a52T1QnfuvZp7X85QvVlLccZeC5a9P",
-          container: "searchMap",
-          zoom: 15,
-        });
+      console.log("CICCIO");
+      console.log(store.arrLat);
+      // this.map = tt.map({
+      //   key: "t7a52T1QnfuvZp7X85QvVlLccZeC5a9P",
+      //   container: "map",
+      //   zoom: 15,
+      // });
 
-        this.apartments.forEach((apartment) => {
-          const { latitude, longitude, title } = apartment;
-          let center = [longitude, latitude];
-          let marker = new tt.Marker().setLngLat(center).addTo(this.map);
-          marker.setPopup(new tt.Popup().setHTML(title)).addTo(this.map);
-        });
-      } else {
-        console.error("Nessun dato sugli appartamenti fornito!");
-      }
+      //   this.arrLat.forEach((apartment) => {
+      //   const { latitude, longitude } = apartment;
+      //   let center = [longitude, latitude];
+      //   let marker = new tt.Marker().setLngLat(center).addTo(this.map);
+      //   marker.setPopup(new tt.Popup().setHTML(title)).addTo(this.map);
+      // });
     },
   },
 
@@ -45,7 +45,7 @@ export default {
 
 <template>
   <div>
-    <div id="searchMap" class="searchMap"></div>
+    <div id="map" class="map"></div>
   </div>
 </template>
 

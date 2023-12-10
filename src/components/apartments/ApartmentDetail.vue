@@ -17,6 +17,19 @@ export default {
     };
   },
 
+  computed: {
+    arrLat() {
+      let allLat = [];
+      allLat.push(this.apartment.latitude);
+      return allLat;
+    },
+    arrLong() {
+      let allLong = [];
+      allLong.push(this.apartment.longitude);
+      return allLong;
+    },
+  },
+
   components: {
     ApartmentCard,
     Map,
@@ -239,11 +252,7 @@ export default {
     <ApartmentCard :apartment="apartment" :isDetail="true" v-if="apartment" />
     <ContactButton v-if="apartment" :apartment_id="this.apartment.id" />
     <div id="map" class="map">
-      <Map
-        :latitude="apartment.latitude"
-        :longitude="apartment.longitude"
-        v-if="apartment"
-      ></Map>
+      <Map :latitude="arrLat" :longitude="arrLong" v-if="apartment"></Map>
     </div>
   </div>
 
