@@ -59,6 +59,14 @@ body {
   border-radius: 3px;
 }
 .scroll-display {
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
   height: 70vh;
+}
+.txt-xs{
+  font-size: .8rem;
+}
+.subtitle{
+  color: #ff7977;
+  
 }

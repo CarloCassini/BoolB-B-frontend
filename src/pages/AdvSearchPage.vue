@@ -1,7 +1,7 @@
 <script>
 import axios from "axios";
 // import MyComponent from "./components/MyComponent.vue";
-import ApartmentsList from "../components/apartments/apartmentslist.vue";
+import ApartmentsList from "../components/apartments/ApartmentsList.vue";
 import FilterBoxUi from "../components/partials/ui/FiltersBoxUi.vue";
 import HeadingTxtUi from "../components/partials/ui/HeadingTxtUi.vue";
 import { store } from "../data/store";

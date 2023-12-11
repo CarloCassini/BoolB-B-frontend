@@ -63,24 +63,36 @@ export default {
   <div class="card-body d-flex flex-column p-0 mx-2">
     <!-- feature -->
     <div class=" my-2 ">
-        <div class="d-flex flex-wrap  justify-content-between">
-          <span  class="badge bg-gradient badge-style col-3 p-1 "><font-awesome-icon icon="fa-solid fa-bed" /> <span >{{apartment.beds}}</span></span>
-          <span  class="badge bg-gradient badge-style col-3 p-1"><font-awesome-icon icon="fa-solid fa-door-open" /> <span>{{apartment.rooms}}</span></span>
-          <span  class="badge bg-gradient badge-style col-3 p-1"><font-awesome-icon icon="fa-solid fa-toilet" /> <span >{{apartment.bathrooms}}</span></span> 
-          <span  class="badge bg-gradient badge-style col-3 p-1"><font-awesome-icon icon="fa-solid fa-maximize" /> <span >{{apartment.m2}}</span> &#13217 </span> 
+        <div class="row g-1">
+          <span  class="badge bg-gradient txt-xs badge-style mx-1 col-5 d-flex justify-content-between  p-1 ">
+            <font-awesome-icon icon="fa-solid fa-bed" /> 
+            <span >{{apartment.beds}}</span>
+          </span>
+          <span  class="badge bg-gradient txt-xs badge-style mx-1 col-5 d-flex justify-content-between p-1">
+            <font-awesome-icon icon="fa-solid fa-door-open" /> 
+            <span>{{apartment.rooms}}</span>
+          </span>
+          <span  class="badge bg-gradient txt-xs badge-style mx-1 col-5 d-flex justify-content-between  p-1">
+            <font-awesome-icon icon="fa-solid fa-toilet" /> 
+            <span >{{apartment.bathrooms}}</span>
+          </span> 
+          <span  class="badge bg-gradient txt-xs badge-style mx-1 col-5 d-flex justify-content-between  p-1">
+            <font-awesome-icon icon="fa-solid fa-maximize" /> 
+            <span >{{apartment.m2}} &#13217</span> 
+          </span> 
         </div>
     </div>
     <!-- indirizzo -->
     <div >
-      <p class="normal-txt-size m-0 px-1"><small>{{apartment.address}}</small></p>
+      <p class="txt-xs m-0 px-1"><small>{{apartment.address}}</small></p>
     </div>
     <!-- servizi -->
     <div class="mt-auto">
-      <div>
-        services:      
+      <div class="subtitle">
+        services:     
       </div>
       <div class="d-flex flex-wrap justify-content-start">
-        <span  v-for="(service,index) in apartment.services" class="badge me-2 my-2 badge-style col-2">
+        <span  v-for="(service,index) in apartment.services" class="badge me-2 my-2 badge-style">
           <abbr :title="service.label" class="initialism">
             <font-awesome-icon :icon="service.symbol" />
           </abbr>
@@ -127,7 +139,7 @@ export default {
         <strong class="text-responsive" >services:</strong>
         <div class="d-flex flex-wrap title-responsive">
       </div>
-          <span  v-for="(service,index) in apartment.services" class="badge me-2 my-2 bg-gradient badge-style"><!-- {{ service.label }} --> <font-awesome-icon :icon="service.symbol" /></span>
+          <span  v-for="(service,index) in apartment.services" class="badge me-2 my-2 d-flex justify-content-center align-items-center badge-style"><!-- {{ service.label }} --> <font-awesome-icon :icon="service.symbol" /></span>
       </div>
     </div>
   </div>
@@ -183,10 +195,8 @@ width: 40%;
 }
 .badge-style{
   background-color: #ff7977;
-  border-radius: 0.5rem;
-  border: 1px solid whitesmoke;
-  color: whitesmoke;
-  font-weight: 700;
+  color: #fff;
+  
 }
 
 // .text-responsive {

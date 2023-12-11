@@ -54,31 +54,36 @@ export default {
 
 <template>
   <!-- <div :class="'row row-cols-' +colNum+  'row-cols-lg-' + colNumLg+ 'g-2 g-lg-3'"> -->
-  <div v-if="!isSearch" class="mb-5">
-    <div class="row g-2 g-lg-3 display-back scroll-display">
-      <div
-        :class="
-          'col-lg-' + colNumLg + ' col-md-' + colNumMd + ' col-sm-' + colNumSm
-        "
-        v-for="(apartment, index) in apartments"
-        key="index"
-      >
-        <ApartmentCard :apartment="apartment" :isDetail="false" />
+  <div v-if="!isSearch" >
+
+    <div class="my-5 scroll-display">
+      
+      <div class="row g-3">
+        
+        <div 
+          :class="'col-lg-' + colNumLg + ' col-md-' + colNumMd + ' col-sm-' + colNumSm"
+          v-for="(apartment, index) in apartments"
+          key="index">
+          <ApartmentCard :apartment="apartment" :isDetail="false" />
+        </div>
+
+        <div v-for="(apartment, index) in apartments_all" 
+        :class=" 'col-lg-' + colNumLg + ' col-md-' + colNumMd + ' col-sm-' + colNumSm"
+          key="index">
+  
+          <ApartmentCard :apartment="apartment" :isDetail="false" />
+  
+        </div>
       </div>
 
-      <div
-        v-for="(apartment, index) in apartments_all"
-        :class="
-          'col-lg-' + colNumLg + ' col-md-' + colNumMd + ' col-sm-' + colNumSm
-        "
-        key="index"
-      >
-        <ApartmentCard :apartment="apartment" :isDetail="false" />
-      </div>
     </div>
+    
   </div>
+
   <div v-if="isSearch" class="mb-5 d-flex">
-    <div class="col-6 row g-2 g-lg-3 display-back scroll-display">
+    <ApartmentCard :apartment="apartment" :isDetail="false" />
+    <div class="col-6 scroll-display">
+
       <div
         :class="
           'col-lg-' + colNumLg + ' col-md-' + colNumMd + ' col-sm-' + colNumSm
@@ -87,6 +92,7 @@ export default {
         key="index"
       >
         <ApartmentCard :apartment="apartment" :isDetail="false" />
+
       </div>
 
       <div
@@ -99,17 +105,21 @@ export default {
         <ApartmentCard :apartment="apartment" :isDetail="false" />
       </div>
     </div>
-    <div class="ms-3 col-6 display-back scroll-display debug">
+    <div class="ms-3 col-6 scroll-display">
       <div class="col-md-6">
         <h3>Mappa appartamenti</h3>
         <div id="map" class="map">
           {{ arrLat }}
           {{ arrLong }}
-          <Map :latitude="0" :longitude="0"></Map>
+          <Map :latitude="0" :longitude="0">
+          
+          </Map>
         </div>
       </div>
     </div>
   </div>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+
+</style>
