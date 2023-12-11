@@ -300,7 +300,7 @@ export default {
             id="distance"
             class="range-styler mx-3 my-3"
             min="1"
-            max="300"
+            max="50"
           />
         </div>
         <div class="d-flex flex-column align-items-center" v-if="isSearchRoute">
