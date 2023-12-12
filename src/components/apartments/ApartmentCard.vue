@@ -138,8 +138,8 @@ export default {
       <div class="mt-auto">
         <strong class="text-responsive" >services:</strong>
         <div class="d-flex flex-wrap title-responsive">
-      </div>
           <span  v-for="(service,index) in apartment.services" class="badge me-2 my-2 d-flex justify-content-center align-items-center badge-style"><!-- {{ service.label }} --> <font-awesome-icon :icon="service.symbol" /></span>
+        </div>
       </div>
     </div>
   </div>
